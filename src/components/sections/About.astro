@@ -1,0 +1,53 @@
+---
+import { about, site, education } from '../../data/content';
+
+const playgroundGradients = [
+  'linear-gradient(145deg, #232136, #c4a7e7 45%, #1a0a10)',
+  'linear-gradient(160deg, #1a1020, #7a1528 50%, #0d0508)',
+  'linear-gradient(135deg, #0a1628, #1e4d6b 45%, #c4a35a)',
+  'linear-gradient(150deg, #200a18, #e8364f 55%, #0a0508)',
+];
+---
+
+<section class="section section-about" id="about">
+  <div class="tf-container">
+    <div class="content-col">
+      <div class="text-body-2 dot-before subtitle">About Me</div>
+      <h2 class="about-title reveal">{about.title}</h2>
+      <p class="about-text reveal">{about.text}</p>
+      <p class="edu reveal">
+        <strong>{education.degree}</strong> — {education.school}
+        <span class="edu-period">{education.period}</span>
+      </p>
+      <a class="handle" href={`mailto:${site.email}`}>{site.email}</a>
+      <div class="playground">
+        {playgroundGradients.map((g, i) => (
+          <div class="playground-item reveal" style={`transition-delay: ${i * 60}ms`}>
+            <span style={`background: ${g};`}></span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .edu {
+    color: var(--muted);
+    margin-bottom: 1.6rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .edu strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .edu-period {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--muted-2);
+    font-size: 1.3rem;
+  }
+</style>

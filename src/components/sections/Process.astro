@@ -1,0 +1,20 @@
+---
+import { process } from '../../data/content';
+---
+
+<section class="section section-process" id="process">
+  <div class="tf-container">
+    <div class="content-col">
+      <div class="text-body-2 dot-before subtitle">Work Process</div>
+      <div class="process-grid">
+        {process.map((step) => (
+          <div class="process-item reveal">
+            <div class="step">{step.step}</div>
+            <h3 class="title">{step.title}</h3>
+            <p class="text">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

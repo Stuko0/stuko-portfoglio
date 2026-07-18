@@ -1,0 +1,20 @@
+---
+import { awards } from '../../data/content';
+---
+
+<section class="section section-awards" id="awards">
+  <div class="tf-container">
+    <div class="content-col">
+      <div class="text-body-2 dot-before subtitle">Awards & Certifications</div>
+      <div class="awards-list">
+        {awards.map((award) => (
+          <div class="award-item reveal">
+            <h6 class="number fw-medium">{award.number}</h6>
+            <h6 class="title fw-medium">{award.title}</h6>
+            <div class="time text-body-1">{award.date}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+import LocalTime from '../islands/LocalTime';
+import Counter from '../islands/Counter';
+import { site, tags, stats } from '../../data/content';
+---
+
+<section class="section-hero" id="home">
+  <div class="tf-container">
+    <div class="content-col" style="position: relative;">
+      <div class="icon-gradient" aria-hidden="true"></div>
+      <LocalTime client:load location={site.location} />
+      <div class="main-title">
+        <div class="text-body-1 dot-before subtitle">AI Systems Engineer</div>
+        <h1 class="title">
+          Building Systems That Think<br />
+          Fast at Scale
+        </h1>
+        <div class="text-body-2 text">{site.intro}</div>
+      </div>
+      <div class="indicators">
+        <ul class="list-tags">
+          {tags.map((tag) => (
+            <li>
+              <a class="text-body-2" href="#services">{tag}</a>
+            </li>
+          ))}
+        </ul>
+        <div class="indicators-wrap">
+          {stats.map((stat) => (
+            <div class="indicators-item">
+              <div class="text-body-1 dot-before indicators-title">{stat.label}</div>
+              <Counter client:visible value={stat.value} suffix={stat.suffix} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

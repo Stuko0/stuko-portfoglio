@@ -1,0 +1,19 @@
+---
+import { partners } from '../../data/content';
+---
+
+<section class="section section-partners" id="partners">
+  <div class="tf-container">
+    <div class="content-col">
+      <div class="text-body-2 dot-before subtitle">Where I Build</div>
+      <h2 class="desc reveal">
+        Shipping production systems for finance, mobile products, and open-source AI tooling
+      </h2>
+      <div class="partners-grid">
+        {partners.map((p) => (
+          <div class="partners-item reveal">{p}</div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

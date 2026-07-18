@@ -1,0 +1,64 @@
+---
+import BudgetChooser from '../islands/BudgetChooser';
+---
+
+<section class="section section-contact" id="contact">
+  <div class="tf-container">
+    <div class="content-col">
+      <div class="section-contact-inner">
+        <h1 class="fw-medium heading">
+          Contact For<br />Systems Work
+        </h1>
+        <form class="form-contact" method="post" id="form-contact">
+          <fieldset class="fiel-mail">
+            <label class="text-xs" for="mail">Your Email</label>
+            <input
+              type="email"
+              name="mail"
+              id="mail"
+              placeholder="Enter the Email"
+              required
+            />
+          </fieldset>
+          <fieldset class="fiel-phone">
+            <label class="text-xs" for="phone">Your Phone</label>
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              placeholder="Enter your phone number"
+              required
+            />
+          </fieldset>
+          <fieldset class="fiel-text">
+            <label class="text-xs" for="message">Messenger</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project..." required
+            ></textarea>
+          </fieldset>
+          <BudgetChooser client:visible />
+          <div class="bot-btn send-wrap">
+            <button type="submit" class="text-body-2 fw-medium">
+              <span class="flex-grow-1 text-start">Get Started</span>
+              <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </form>
+        <script>
+          const form = document.getElementById('form-contact');
+          form?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"] span');
+            if (btn) {
+              const prev = btn.textContent;
+              btn.textContent = 'Message sent ✓';
+              setTimeout(() => {
+                btn.textContent = prev;
+                form.reset();
+              }, 2200);
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</section>

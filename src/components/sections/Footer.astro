@@ -1,0 +1,37 @@
+---
+import { site } from '../../data/content';
+
+const items = Array.from({ length: 6 }, () => 'Book A Call');
+---
+
+<footer class="tf-footer style-1">
+  <div class="footer-glow" aria-hidden="true"></div>
+  <div class="tf-container">
+    <div class="content-col">
+      <a href="#contact" class="cta" aria-label="Book a call">
+        <div class="footer-marquee">
+          <div class="track">
+            {items.map((text) => (
+              <>
+                <div class="text text-display-2">{text}</div>
+                <div class="dot"></div>
+              </>
+            ))}
+          </div>
+          <div class="track">
+            {items.map((text) => (
+              <>
+                <div class="text text-display-2">{text}</div>
+                <div class="dot"></div>
+              </>
+            ))}
+          </div>
+        </div>
+      </a>
+      <div class="footer-bottom">
+        <span>© {new Date().getFullYear()} {site.name} · {site.shortName}</span>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+    </div>
+  </div>
+</footer>

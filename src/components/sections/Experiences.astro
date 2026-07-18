@@ -1,0 +1,25 @@
+---
+import { experiences } from '../../data/content';
+---
+
+<section class="section section-experiences" id="experience">
+  <div class="tf-container">
+    <div class="content-col">
+      <div class="text-body-2 dot-before subtitle">Experiences</div>
+      <h2 class="desc reveal">
+        From GPU inference on financial streams to mobile architecture at scale — systems built to last under load
+      </h2>
+      <div class="experiences-wrap">
+        {experiences.map((exp) => (
+          <div class="item reveal">
+            <div class="sub-heading text">{exp.company}</div>
+            <div class="job-title">
+              <h6 class="title">{exp.role}</h6>
+              <div class="text-body-2 time-line type-tags">{exp.period}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
