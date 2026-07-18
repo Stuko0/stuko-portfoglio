@@ -32,7 +32,7 @@
   },
   "stats": [
     { "label": "Años Construyendo Sistemas", "value": 4, "suffix": "+" },
-    { "label": "Núcleos GPU Gestionados", "value": 32, "suffix": "+" }
+    { "label": "Deployments en Producción", "value": 50, "suffix": "+" }
   ],
   "experiences": {
     "heading": "Experiencia",

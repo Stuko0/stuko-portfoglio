@@ -1,8 +1,8 @@
 ---
 import '../styles/global.css';
-import SidebarMenu from '../components/islands/SidebarMenu';
+import RightNav from '../components/islands/RightNav';
 import ScrollReveal from '../components/islands/ScrollReveal';
-import { navLinks, socials } from '../data/content';
+import { navLinks } from '../data/content';
 
 interface Props {
   title?: string;
@@ -17,7 +17,6 @@ const {
 } = Astro.props;
 
 const nl = navLinks();
-const soc = socials();
 ---
 
 <!doctype html>
@@ -39,7 +38,7 @@ const soc = socials();
   </head>
   <body>
     <div class="wrapper">
-      <SidebarMenu client:load locale={locale} navLinks={nl} socials={soc} />
+      <RightNav client:load locale={locale} navLinks={nl} />
       <div class="main-content relative">
         <slot />
       </div>

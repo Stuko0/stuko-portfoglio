@@ -32,7 +32,7 @@
   },
   "stats": [
     { "label": "Years Building Systems", "value": 4, "suffix": "+" },
-    { "label": "GPU Cores Managed", "value": 32, "suffix": "+" }
+    { "label": "Production Deployments", "value": 50, "suffix": "+" }
   ],
   "experiences": {
     "heading": "Experiences",
