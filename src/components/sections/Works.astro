@@ -1,5 +1,6 @@
 ---
 import { works } from '../../data/content';
+const w = works();
 
 const marqueeItems = Array.from({ length: 6 }, () => 'Selected Work');
 ---
@@ -29,7 +30,7 @@ const marqueeItems = Array.from({ length: 6 }, () => 'Selected Work');
       </div>
 
       <div class="works-wrap">
-        {works.map((work) => (
+        {w.map((work: any) => (
           <a
             href={work.href}
             class="works-item reveal"

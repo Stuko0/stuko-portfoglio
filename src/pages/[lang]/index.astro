@@ -1,0 +1,55 @@
+---
+import { setLocale, type Locale } from '../../data/content';
+import Layout from '../../layouts/Layout.astro';
+import LeftStage from '../../components/sections/LeftStage.astro';
+import Hero from '../../components/sections/Hero.astro';
+import Experiences from '../../components/sections/Experiences.astro';
+import Works from '../../components/sections/Works.astro';
+import Services from '../../components/sections/Services.astro';
+import About from '../../components/sections/About.astro';
+import TechStack from '../../components/sections/TechStack.astro';
+import Partners from '../../components/sections/Partners.astro';
+import Process from '../../components/sections/Process.astro';
+import Awards from '../../components/sections/Awards.astro';
+import Pricing from '../../components/sections/Pricing.astro';
+import Faqs from '../../components/sections/Faqs.astro';
+import Contact from '../../components/sections/Contact.astro';
+import Footer from '../../components/sections/Footer.astro';
+import { site } from '../../data/content';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'es' } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: string };
+
+// Ensure valid locale
+const locale: Locale = (lang === 'es' ? 'es' : 'en');
+
+// Set the global locale — all content() calls will use this
+setLocale(locale);
+
+const s = site();
+---
+
+<Layout locale={locale} title={s.title} description={s.description}>
+  <LeftStage />
+  <Hero />
+  <div class="wrapper-content relative overflow-hidden">
+    <Experiences />
+    <Works />
+    <Services />
+    <About />
+    <TechStack />
+    <Partners />
+    <Process />
+    <Awards />
+    <Pricing />
+    <Faqs />
+    <Contact />
+  </div>
+  <Footer />
+</Layout>

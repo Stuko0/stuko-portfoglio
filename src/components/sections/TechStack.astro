@@ -1,5 +1,6 @@
 ---
 import { techStack } from '../../data/content';
+const ts = techStack();
 ---
 
 <section class="section section-tech-stack" id="tech">
@@ -7,7 +8,7 @@ import { techStack } from '../../data/content';
     <div class="content-col">
       <div class="text-body-2 dot-before subtitle">Core Stack</div>
       <div class="tech-grid">
-        {techStack.map((tech) => (
+        {ts.map((tech: any) => (
           <div class="tech-stack-item reveal">
             <div class="logo">{tech.name.charAt(0)}</div>
             <div class="name">{tech.name}</div>

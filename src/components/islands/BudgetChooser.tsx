@@ -1,12 +1,15 @@
 import { useState } from 'preact/hooks';
-import { budgetOptions } from '../../data/content';
 
-export default function BudgetChooser() {
+interface Props {
+  data: string[];
+}
+
+export default function BudgetChooser({ data }: Props) {
   const [selected, setSelected] = useState(1);
 
   return (
     <div class="pricing-list list-choose" role="listbox" aria-label="Budget range">
-      {budgetOptions.map((opt, i) => (
+      {data.map((opt, i) => (
         <button
           key={opt}
           type="button"
@@ -18,7 +21,7 @@ export default function BudgetChooser() {
           {opt}
         </button>
       ))}
-      <input type="hidden" name="budget" value={budgetOptions[selected]} />
+      <input type="hidden" name="budget" value={data[selected]} />
     </div>
   );
 }

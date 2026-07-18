@@ -1,5 +1,8 @@
 ---
 import { about, site, education } from '../../data/content';
+const a = about();
+const s = site();
+const e = education();
 
 const playgroundGradients = [
   'linear-gradient(145deg, #232136, #c4a7e7 45%, #1a0a10)',
@@ -13,13 +16,13 @@ const playgroundGradients = [
   <div class="tf-container">
     <div class="content-col">
       <div class="text-body-2 dot-before subtitle">About Me</div>
-      <h2 class="about-title reveal">{about.title}</h2>
-      <p class="about-text reveal">{about.text}</p>
+      <h2 class="about-title reveal">{a.title}</h2>
+      <p class="about-text reveal">{a.text}</p>
       <p class="edu reveal">
-        <strong>{education.degree}</strong> — {education.school}
-        <span class="edu-period">{education.period}</span>
+        <strong>{e.degree}</strong> — {e.school}
+        <span class="edu-period">{e.period}</span>
       </p>
-      <a class="handle" href={`mailto:${site.email}`}>{site.email}</a>
+      <a class="handle" href={`mailto:${s.email}`}>{s.email}</a>
       <div class="playground">
         {playgroundGradients.map((g, i) => (
           <div class="playground-item reveal" style={`transition-delay: ${i * 60}ms`}>

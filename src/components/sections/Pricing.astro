@@ -1,11 +1,13 @@
 ---
 import PricingTabs from '../islands/PricingTabs';
+import { pricingPlans } from '../../data/content';
+const pp = pricingPlans();
 ---
 
 <section class="section section-pricing" id="pricing">
   <div class="tf-container">
     <div class="content-col">
-      <PricingTabs client:visible />
+      <PricingTabs client:visible data={pp} />
     </div>
   </div>
 </section>

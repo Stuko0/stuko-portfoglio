@@ -1,39 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LeftStage from '../components/sections/LeftStage.astro';
-import Hero from '../components/sections/Hero.astro';
-import Experiences from '../components/sections/Experiences.astro';
-import Works from '../components/sections/Works.astro';
-import Services from '../components/sections/Services.astro';
-import About from '../components/sections/About.astro';
-import TechStack from '../components/sections/TechStack.astro';
-import Testimonials from '../components/sections/Testimonials.astro';
-import Partners from '../components/sections/Partners.astro';
-import Process from '../components/sections/Process.astro';
-import Awards from '../components/sections/Awards.astro';
-import Pricing from '../components/sections/Pricing.astro';
-import Faqs from '../components/sections/Faqs.astro';
-import Contact from '../components/sections/Contact.astro';
-import Footer from '../components/sections/Footer.astro';
-import { site } from '../data/content';
+// Redirect root to English
+const base = Astro.url.pathname.replace(/\/$/, '');
+return Astro.redirect(`${base}/en/`);
 ---
 
-<Layout title={site.title} description={site.description}>
-  <LeftStage />
-  <Hero />
-  <div class="wrapper-content relative overflow-hidden">
-    <Experiences />
-    <Works />
-    <Services />
-    <About />
-    <TechStack />
-    <Testimonials />
-    <Partners />
-    <Process />
-    <Awards />
-    <Pricing />
-    <Faqs />
-    <Contact />
-  </div>
-  <Footer />
-</Layout>
+<!-- Redirecting to /en/ -->

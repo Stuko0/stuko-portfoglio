@@ -1,5 +1,6 @@
 ---
 import { site } from '../../data/content';
+const s = site();
 
 const items = Array.from({ length: 6 }, () => 'Book A Call');
 ---
@@ -29,8 +30,8 @@ const items = Array.from({ length: 6 }, () => 'Book A Call');
         </div>
       </a>
       <div class="footer-bottom">
-        <span>© {new Date().getFullYear()} {site.name} · {site.shortName}</span>
-        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <span>© {new Date().getFullYear()} {s.name} · {s.shortName}</span>
+        <a href={`mailto:${s.email}`}>{s.email}</a>
       </div>
     </div>
   </div>

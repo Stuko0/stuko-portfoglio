@@ -1,5 +1,7 @@
 ---
 import BudgetChooser from '../islands/BudgetChooser';
+import { budgetOptions } from '../../data/content';
+const bOpts = budgetOptions();
 ---
 
 <section class="section section-contact" id="contact">
@@ -35,7 +37,7 @@ import BudgetChooser from '../islands/BudgetChooser';
             <textarea id="message" name="message" placeholder="Tell me about your project..." required
             ></textarea>
           </fieldset>
-          <BudgetChooser client:visible />
+          <BudgetChooser client:visible data={bOpts} />
           <div class="bot-btn send-wrap">
             <button type="submit" class="text-body-2 fw-medium">
               <span class="flex-grow-1 text-start">Get Started</span>

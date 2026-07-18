@@ -1,12 +1,14 @@
 ---
 import FaqAccordion from '../islands/FaqAccordion';
+import { faqs } from '../../data/content';
+const fq = faqs();
 ---
 
 <section class="section section-faqs" id="faqs">
   <div class="tf-container">
     <div class="content-col">
       <div class="text-body-2 dot-before subtitle">FAQs</div>
-      <FaqAccordion client:visible />
+      <FaqAccordion client:visible data={fq} />
     </div>
   </div>
 </section>

@@ -2,20 +2,26 @@
 import '../styles/global.css';
 import SidebarMenu from '../components/islands/SidebarMenu';
 import ScrollReveal from '../components/islands/ScrollReveal';
+import { navLinks, socials } from '../data/content';
 
 interface Props {
   title?: string;
   description?: string;
+  locale?: string;
 }
 
 const {
   title = 'Stuko — Portfolio',
   description = 'Diseño digital con alma oscura. Experiencias elegantes inspiradas en Alice: Madness Returns.',
+  locale = 'en',
 } = Astro.props;
+
+const nl = navLinks();
+const soc = socials();
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +39,7 @@ const {
   </head>
   <body>
     <div class="wrapper">
-      <SidebarMenu client:load />
+      <SidebarMenu client:load locale={locale} navLinks={nl} socials={soc} />
       <div class="main-content relative">
         <slot />
       </div>

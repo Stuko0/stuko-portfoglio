@@ -1,0 +1,261 @@
+{
+  "site": {
+    "name": "Alexander Porcel",
+    "shortName": "Stuko",
+    "handle": "@stuko",
+    "title": "Alexander Porcel — AI Systems Engineer",
+    "description": "AI Systems Engineer construyendo backends distribuidos, sistemas de inferencia GPU y pipelines de datos de alto rendimiento. Golang, Python, CUDA, Kubernetes.",
+    "location": "Cochabamba, BO",
+    "email": "avplaying@gmail.com",
+    "phone": "+591 6760 2979",
+    "tagline": "Building Systems That Think\nFast at Scale",
+    "intro": "AI Systems Engineer con ~4 años construyendo backends distribuidos,\ninferencia GPU y pipelines de datos de alto rendimiento.",
+    "role": "AI Systems Engineer | Sistemas Distribuidos | Inferencia GPU | Kubernetes"
+  },
+  "nav": {
+    "home": "Inicio",
+    "experience": "Experiencia",
+    "works": "Trabajos",
+    "services": "Servicios",
+    "about": "Sobre Mí",
+    "stack": "Stack",
+    "awards": "Premios",
+    "engagement": "Contratación",
+    "faqs": "Preguntas",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "subtitle": "AI Systems Engineer",
+    "titleLine1": "Building Systems That Think",
+    "titleLine2": "Fast at Scale",
+    "tags": ["Sistemas Distribuidos", "Inferencia GPU", "Agentes IA", "Kubernetes"]
+  },
+  "stats": [
+    { "label": "Años Construyendo Sistemas", "value": 4, "suffix": "+" },
+    { "label": "Núcleos GPU Gestionados", "value": 32, "suffix": "+" }
+  ],
+  "experiences": {
+    "heading": "Experiencia",
+    "description": "Desde inferencia GPU en streams financieros hasta arquitectura mobile a escala — sistemas construidos para durar bajo carga",
+    "items": [
+      {
+        "company": "Arquant Argentina",
+        "role": "AI & Data Engineer",
+        "period": "Ago 2025 – Presente"
+      },
+      {
+        "company": "Purple MangoCorp",
+        "role": "Arquitecto Mobile (Flutter)",
+        "period": "Abr 2023 – Presente"
+      },
+      {
+        "company": "Freelance",
+        "role": "Desarrollador Fullstack",
+        "period": "Feb 2022 – Presente"
+      }
+    ]
+  },
+  "works": {
+    "heading": "Trabajos Seleccionados",
+    "items": [
+      {
+        "title": "Lydia Agent",
+        "category": "Agente IA · CLI Open Source",
+        "date": "2025 – Presente",
+        "href": "https://lydia-agent.stuko.dev",
+        "gradient": "linear-gradient(135deg, #232136 0%, #c4a7e7 35%, #c41e3a 70%, #0a0508 100%)",
+        "blurb": "Compañero IA local: memoria persistente, skills, subagentes en sandbox. Corre en tu máquina."
+      },
+      {
+        "title": "!Scarlet",
+        "category": "Sistemas Distribuidos · Geospatial",
+        "date": "2024 – Presente",
+        "href": "#contact",
+        "gradient": "linear-gradient(160deg, #1a0f20 0%, #7a1528 40%, #c41e3a 70%, #0d0508 100%)",
+        "blurb": "Monitoreo de incendios forestales para Bolivia — telemetría satelital, Golang, gRPC, K8s, PostGIS."
+      },
+      {
+        "title": "Arquant GPU Inference",
+        "category": "Sistemas IA · Datos Financieros",
+        "date": "2025 – Presente",
+        "href": "#contact",
+        "gradient": "linear-gradient(145deg, #0a1628 0%, #1e4d6b 40%, #c4a35a 75%, #0a0508 100%)",
+        "blurb": "Inferencia GPU en nodos RTX A6000 + StarRocks/ES OLAP para consultas financieras sub-second."
+      }
+    ]
+  },
+  "services": {
+    "heading": "Servicios",
+    "groups": [
+      {
+        "title": "Sistemas IA",
+        "items": [
+          "Pipelines de inferencia GPU acelerados",
+          "Despliegue de modelos LLM / TensorFlow",
+          "Agentes IA y flujos de automatización"
+        ]
+      },
+      {
+        "title": "Backends Distribuidos",
+        "items": [
+          "Pipelines de datos de alto rendimiento (Golang)",
+          "Arquitectura gRPC / microservicios",
+          "Procesamiento de streams en tiempo real (CUDA)"
+        ]
+      },
+      {
+        "title": "Infraestructura",
+        "items": [
+          "Kubernetes + GitOps (ArgoCD)",
+          "Docker, Linux, Envoy Proxy",
+          "Observabilidad y redes resilientes"
+        ]
+      },
+      {
+        "title": "Ingeniería de Producto",
+        "items": [
+          "Flutter Clean Architecture",
+          "Fullstack web (React / Astro)",
+          "Auditorías de rendimiento y escalabilidad"
+        ]
+      }
+    ]
+  },
+  "about": {
+    "heading": "Sobre Mí",
+    "title": "Detrás de todo sistema confiable hay una arquitectura clara",
+    "text": "Diseño e implemento sistemas que procesan datos a escala: pipelines financieros de alto volumen, inferencia GPU de baja latencia y agentes de IA locales. Me especializo en Golang, Python y CUDA, con infraestructura Kubernetes lista para producción. De Cochabamba para el mundo — remote-first."
+  },
+  "techStack": {
+    "heading": "Stack Tecnológico",
+    "items": [
+      { "name": "Golang", "desc": "Backends concurrentes y sistemas distribuidos" },
+      { "name": "Python", "desc": "ML, data pipelines y tooling de IA" },
+      { "name": "CUDA", "desc": "Algoritmos paralelos e inferencia GPU" },
+      { "name": "Kubernetes", "desc": "Orquestación, GitOps y ArgoCD" },
+      { "name": "TensorFlow", "desc": "Modelos y despliegue de inferencia" },
+      { "name": "StarRocks", "desc": "OLAP analítico de sub-segundo" },
+      { "name": "PostgreSQL", "desc": "Datos relacionales y PostGIS" },
+      { "name": "Flutter", "desc": "Mobile multiplataforma a escala" }
+    ]
+  },
+  "partners": {
+    "heading": "Stack",
+    "items": ["ARQUANT", "MANGO", "K8S", "CUDA", "GITHUB"]
+  },
+  "process": {
+    "heading": "Proceso",
+    "items": [
+      {
+        "step": "Paso 1",
+        "title": "Alcance y\nRestricciones",
+        "text": "Aclaro objetivos, latencia, volumen de datos y límites de infraestructura antes de escribir código."
+      },
+      {
+        "step": "Paso 2",
+        "title": "Arquitectura\ny Contratos",
+        "text": "Diseño APIs, flujos de datos y límites de servicio — gRPC, eventos, storage y topología K8s."
+      },
+      {
+        "step": "Paso 3",
+        "title": "Construir e\nIterar",
+        "text": "Implemento en verticales cortos: pipeline, inferencia, observability. Métricas desde el día uno."
+      },
+      {
+        "step": "Paso 4",
+        "title": "Endurecer y\nEntregar",
+        "text": "Load tests, GitOps, runbooks. Dejo el sistema operable y documentado para el equipo."
+      }
+    ]
+  },
+  "awards": {
+    "heading": "Premios",
+    "items": [
+      { "number": "01", "title": "Unihackz 2024 — Hackathon", "date": "01/2024" },
+      { "number": "02", "title": "Unihackz 2023 — Hackathon", "date": "01/2023" },
+      { "number": "03", "title": "Cisco — Seguridad en Endpoints", "date": "04/2025" },
+      { "number": "04", "title": "Cisco — Dispositivos de Red y Configuración Inicial", "date": "11/2024" }
+    ]
+  },
+  "pricing": {
+    "heading": "Contratación",
+    "plans": [
+      {
+        "id": "consulting",
+        "name": "Consultoría",
+        "blurb": "Revisiones de arquitectura, debugging de rendimiento, trabajo de sistemas a corto plazo.",
+        "price": "$65",
+        "unit": "/ hora",
+        "features": [
+          "Revisiones de arquitectura y diseño",
+          "Auditorías de rendimiento GPU / pipeline",
+          "Guía de Kubernetes y GitOps",
+          "Colaboración remota",
+          "Disponibilidad en días hábiles",
+          "Actualizaciones asíncronas vía Git / docs"
+        ]
+      },
+      {
+        "id": "retainer",
+        "name": "Retainer",
+        "blurb": "Gestión continua de sistemas IA, backends o infraestructura de agentes.",
+        "price": "$4.5k",
+        "unit": "/ mes",
+        "features": [
+          "Gestión de sistemas a medio tiempo",
+          "Agentes IA y pipelines de inferencia",
+          "Backends distribuidos (Go / Python)",
+          "Infra como código + observabilidad",
+          "Ventana de respuesta prioritaria",
+          "Revisión mensual de roadmap y métricas"
+        ]
+      }
+    ]
+  },
+  "faqs": {
+    "heading": "Preguntas Frecuentes",
+    "items": [
+      {
+        "q": "¿Qué tipo de trabajo aceptas?",
+        "a": "Ingeniería de sistemas IA: backends distribuidos, inferencia GPU, pipelines de datos, agentes IA y Kubernetes en producción. También arquitectura Flutter cuando el producto lo necesita."
+      },
+      {
+        "q": "¿Cuál es la duración típica de un engagement?",
+        "a": "Sprints de consultoría de 1 a 4 semanas para problemas específicos, o retainers para gestión continua de sistemas. Proyectos grandes (como !Scarlet) se definen por hito."
+      },
+      {
+        "q": "¿Qué stack prefieres?",
+        "a": "Golang y Python para backends e IA, CUDA para workloads paralelos, Kubernetes + ArgoCD para deploy, StarRocks/Elasticsearch/PostgreSQL para datos. Flutter + React cuando hay UI."
+      },
+      {
+        "q": "¿Trabajas completamente remoto?",
+        "a": "Sí. Con sede en Cochabamba, Bolivia — remote-first con comunicación asíncrona y arquitectura escrita clara."
+      },
+      {
+        "q": "¿Qué es Lydia Agent?",
+        "a": "Un CLI de agente IA open-source, local-first. Memoria persistente, skills extensibles, subagentes en sandbox. Pruébalo en lydia-agent.stuko.dev."
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Contacto",
+    "methodPlaceholder": "Método",
+    "budget": "Presupuesto Aproximado",
+    "submit": "Enviar Mensaje",
+    "sending": "Enviando..."
+  },
+  "footer": {
+    "cta": "Agenda una Llamada"
+  },
+  "socials": [
+    { "label": "GitHub", "href": "https://github.com/Stuko0" },
+    { "label": "Lydia", "href": "https://lydia-agent.stuko.dev" },
+    { "label": "Email", "href": "mailto:avplaying@gmail.com" },
+    { "label": "Web", "href": "https://stuko.dev" }
+  ],
+  "education": {
+    "degree": "Ingeniería de Sistemas",
+    "school": "Universidad Franz Tamayo",
+    "period": "02/2022 – 08/2026"
+  }
+}

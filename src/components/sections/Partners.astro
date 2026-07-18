@@ -1,5 +1,6 @@
 ---
 import { partners } from '../../data/content';
+const p = partners();
 ---
 
 <section class="section section-partners" id="partners">
@@ -10,8 +11,8 @@ import { partners } from '../../data/content';
         Shipping production systems for finance, mobile products, and open-source AI tooling
       </h2>
       <div class="partners-grid">
-        {partners.map((p) => (
-          <div class="partners-item reveal">{p}</div>
+        {p.map((pname: string) => (
+          <div class="partners-item reveal">{pname}</div>
         ))}
       </div>
     </div>

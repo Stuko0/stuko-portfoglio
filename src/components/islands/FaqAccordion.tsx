@@ -1,13 +1,21 @@
 import { useState } from 'preact/hooks';
-import { faqs } from '../../data/content';
 
-export default function FaqAccordion() {
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  data: FaqItem[];
+}
+
+export default function FaqAccordion({ data }: Props) {
   const [open, setOpen] = useState(0);
 
   return (
     <>
       <div class="faqs-wrap">
-        {faqs.map((faq, i) => {
+        {data.map((faq, i) => {
           const active = open === i;
           return (
             <div

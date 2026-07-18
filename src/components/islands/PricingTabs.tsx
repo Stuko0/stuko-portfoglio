@@ -1,16 +1,28 @@
 import { useState } from 'preact/hooks';
-import { pricingPlans } from '../../data/content';
 
-export default function PricingTabs() {
+interface PricingPlan {
+  id: string;
+  name: string;
+  blurb: string;
+  price: string;
+  unit: string;
+  features: string[];
+}
+
+interface Props {
+  data: PricingPlan[];
+}
+
+export default function PricingTabs({ data }: Props) {
   const [active, setActive] = useState(0);
-  const plan = pricingPlans[active];
+  const plan = data[active];
 
   return (
     <>
       <div class="heading">
         <div class="text-display-2 fw-medium title">Engagement</div>
         <div class="menu-tab style-1" role="tablist">
-          {pricingPlans.map((p, i) => (
+          {data.map((p, i) => (
             <button
               key={p.id}
               type="button"
