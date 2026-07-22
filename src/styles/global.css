@@ -253,6 +253,47 @@ h6, .h6 {
   position: relative;
 }
 
+/* Heartless section divider — thorn vine with rose */
+.section::after {
+  content: '✦';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+  color: var(--primary-deep);
+  opacity: 0.25;
+}
+
+.section:last-of-type::after {
+  display: none;
+}
+
+/* Vine line across section dividers */
+.section::before {
+  content: '';
+  position: absolute;
+  bottom: 0.7rem;
+  left: 42%;
+  right: 42%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(122, 21, 40, 0.2), transparent);
+}
+
+.section:last-of-type::before {
+  display: none;
+}
+
+/* Heart suit on section headings */
+.section .subtitle::after {
+  content: '♡';
+  display: inline-block;
+  margin-left: 0.8rem;
+  font-size: 1rem;
+  color: var(--primary);
+  opacity: 0.3;
+}
+
 .section-label {
   margin-bottom: 2rem;
 }
@@ -595,12 +636,12 @@ h6, .h6 {
   aspect-ratio: 16 / 10;
   margin-bottom: 2rem;
   border: 1px solid var(--border-soft);
+  box-shadow: inset 0 0 60px rgba(122, 21, 40, 0.06);
 }
 
 .works-item .image-bg {
   position: absolute;
   inset: 0;
-  transition: transform 0.6s var(--ease);
 }
 
 .works-item:hover .image-bg {

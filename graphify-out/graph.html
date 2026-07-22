@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>stuko-portfoglio — Heartless Graph</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Plus+Jakarta+Sans:wght@400;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body {
+  background: #070505;
+  background-image:
+    radial-gradient(ellipse at 15% 30%, rgba(60,0,0,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 70%, rgba(30,0,20,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(15,5,5,0.4) 0%, transparent 70%);
+  color: #e0cfc8;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  overflow: hidden;
+  cursor: default;
+}
+
+/* ===== TOP BAR ===== */
+#tb {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 24px;
+  background: linear-gradient(180deg, rgba(12,6,6,0.98) 0%, rgba(8,4,4,0.92) 100%);
+  border-bottom: 1px solid rgba(120,40,40,0.3);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 62px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+#tb::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(180,60,60,0.3), rgba(180,60,60,0.5), rgba(180,60,60,0.3), transparent);
+}
+#tb h1 {
+  font-size: 18px; font-weight: 600; font-style: italic;
+  color: #e8d0c8; letter-spacing: 1.5px;
+  text-shadow: 0 0 30px rgba(180,60,60,0.15);
+}
+#tb h1 .orn { color: #6b2020; font-size: 14px; margin: 0 4px; font-style: normal; }
+#tb .s {
+  font-size: 12px; color: rgba(180,150,140,0.6); font-family: 'Plus Jakarta Sans', sans-serif;
+  margin-left: auto; white-space: nowrap; letter-spacing: 0.3px;
+  font-weight: 400; font-style: normal;
+}
+#tb input {
+  background: rgba(20,10,10,0.8); border: 1px solid rgba(120,40,40,0.25);
+  color: #d0b8b0; padding: 7px 14px; border-radius: 20px;
+  font-size: 12px; width: 200px; outline: none;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  transition: all 0.3s ease;
+}
+#tb input:focus {
+  border-color: rgba(180,60,60,0.5);
+  box-shadow: 0 0 20px rgba(180,60,60,0.08);
+  background: rgba(20,10,10,0.95);
+}
+#tb input::placeholder { color: rgba(180,150,140,0.35); font-style: italic; }
+
+/* ===== GRAPH AREA ===== */
+#g{position:fixed;top:62px;left:0;right:0;bottom:0;}
+
+/* ===== VINE-LIKE EDGES ===== */
+.lk {
+  stroke-opacity: 0.18;
+  transition: stroke-opacity 0.3s ease;
+}
+
+/* ===== NODES ===== */
+.nd { cursor: pointer; }
+.nd text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px; font-weight: 300; font-style: italic;
+  pointer-events: none;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.95), 0 0 12px rgba(0,0,0,0.7);
+  letter-spacing: 0.3px;
+}
+.nd:hover .rose-node { filter: drop-shadow(0 0 8px rgba(180,60,60,0.15)); }
+
+/* ===== TOOLTIP — Gothic Ornate ===== */
+#tip {
+  position: fixed; display: none;
+  background: linear-gradient(135deg, rgba(14,8,8,0.97) 0%, rgba(10,5,5,0.97) 100%);
+  border: 1px solid rgba(120,40,40,0.3);
+  border-radius: 16px;
+  padding: 18px 22px;
+  font-size: 13px;
+  max-width: 440px;
+  z-index: 200;
+  box-shadow:
+    0 8px 40px rgba(0,0,0,0.7),
+    0 0 0 1px rgba(120,40,40,0.1),
+    inset 0 1px 0 rgba(180,140,130,0.05);
+  pointer-events: none; line-height: 1.6;
+  font-family: 'Cormorant Garamond', serif;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+#tip::before {
+  content: '❧';
+  position: absolute; top: -6px; right: 16px;
+  color: rgba(120,40,40,0.3); font-size: 12px;
+}
+#tip::after {
+  content: '❧';
+  position: absolute; bottom: -6px; left: 16px;
+  color: rgba(120,40,40,0.3); font-size: 12px;
+  transform: scaleX(-1);
+}
+#tip .tp {
+  color: #d0a098; font-family: 'Cormorant Garamond', serif;
+  font-size: 14px; font-weight: 600; font-style: italic;
+  word-break: break-all; letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(120,40,40,0.15);
+  padding-bottom: 6px; margin-bottom: 6px;
+}
+#tip .tp::before { content: '✧ '; color: rgba(120,40,40,0.3); font-style: normal; }
+#tip .tm { color: rgba(200,170,160,0.7); font-size: 12px; margin-top: 2px; font-style: italic; }
+#tip .ti {
+  color: rgba(180,150,140,0.5); font-size: 11px; font-style: normal;
+  margin-top: 8px; max-height: 60px; overflow: hidden;
+  border-top: 1px solid rgba(120,40,40,0.1);
+  padding-top: 6px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+}
+
+/* ===== LEGEND ===== */
+.ll {
+  position: fixed; bottom: 24px; right: 24px;
+  background: rgba(10,5,5,0.92);
+  border: 1px solid rgba(120,40,40,0.15);
+  border-radius: 16px;
+  padding: 16px 20px;
+  font-size: 11px; font-style: italic;
+  z-index: 100; max-height: 280px; overflow-y: auto; min-width: 160px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+.ll h3 {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 2px; margin-bottom: 10px;
+  color: rgba(180,140,130,0.5);
+  font-style: normal;
+  border-bottom: 1px solid rgba(120,40,40,0.1);
+  padding-bottom: 6px;
+}
+.ll h3::before { content: '♢ '; }
+.ll h3::after { content: ' ♢'; }
+.lg {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 5px;
+  color: rgba(200,170,160,0.65);
+  transition: color 0.2s ease;
+}
+.lg:hover { color: rgba(200,170,160,0.9); }
+.ld {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.lg:hover .ld { filter: brightness(1.3); }
+
+/* ===== COUNTS ===== */
+.cnt {
+  position: fixed; bottom: 24px; left: 24px;
+  background: rgba(10,5,5,0.85);
+  border: 1px solid rgba(120,40,40,0.12);
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-size: 12px; font-style: italic;
+  color: rgba(180,150,140,0.5);
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.cnt b { color: #d0a098; font-weight: 600; }
+
+/* ===== ROSE CORNER DECORATIONS ===== */
+.corner-rose {
+  position: fixed; z-index: 90; pointer-events: none;
+  opacity: 0.06; font-size: 48px;
+}
+.corner-rose.tl { top: 68px; left: 12px; transform: rotate(-15deg); }
+.corner-rose.tr { top: 68px; right: 12px; transform: rotate(15deg) scaleX(-1); }
+.corner-rose.bl { bottom: 8px; left: 12px; transform: rotate(15deg) scaleY(-1); }
+.corner-rose.br { bottom: 8px; right: 12px; transform: rotate(-15deg) scaleX(-1) scaleY(-1); }
+
+/* ===== VINE SCROLLBAR ===== */
+.ll::-webkit-scrollbar { width: 4px; }
+.ll::-webkit-scrollbar-track { background: transparent; }
+.ll::-webkit-scrollbar-thumb { background: rgba(120,40,40,0.2); border-radius: 2px; }
+.ll::-webkit-scrollbar-thumb:hover { background: rgba(120,40,40,0.4); }
+
+/* ===== WATERMARK ===== */
+.watermark {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0; pointer-events: none;
+  font-size: 200px; opacity: 0.015;
+  color: #8B0000;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  user-select: none;
+}
+
+/* ===== ANIMATED THORNS ===== */
+@keyframes thornPulse {
+  0%, 100% { opacity: 0.12; }
+  50% { opacity: 0.2; }
+}
+.thorn {
+  animation: thornPulse 4s ease-in-out infinite;
+}
+
+/* SVG defs for thorns and vines */
+</style>
+</head>
+<body>
+
+<!-- Corner roses -->
+<div class="corner-rose tl">🥀</div>
+<div class="corner-rose tr">🌹</div>
+<div class="corner-rose bl">🌹</div>
+<div class="corner-rose br">🥀</div>
+
+<!-- Watermark -->
+<div class="watermark">♡ Heartless ♡</div>
+
+<div id="tb">
+  <h1><span class="orn">♢</span> stuko-portfoglio <span class="orn">♢</span></h1>
+  <span class="s" id="statsbar">24 files · 9 dirs · 1 edges · tokens 8:1</span>
+  <input id="q" type="text" placeholder="filter by name...">
+</div>
+<div id="g"></div>
+<div id="tip"></div>
+<div class="ll"><h3>Clusters</h3></div>
+<div class="cnt">✧ <b id="nc">0</b> nodes · <b id="ec">0</b> edges ✧</div>
+
+<script>
+var N=[{"id": "README.md", "path": "README.md", "type": "file", "language": "markdown", "lines": 57, "imports": ["https://wpriverthemes.com/HTML/jayden/index.html"], "entities": [], "cluster": "#f5e0d0", "label": "README.md"}, {"id": "package.json", "path": "package.json", "type": "file", "language": "json", "lines": 20, "imports": [], "entities": [], "cluster": "#f5e0d0", "label": "package.json"}, {"id": "tsconfig.json", "path": "tsconfig.json", "type": "file", "language": "json", "lines": 14, "imports": [], "entities": [], "cluster": "#f5e0d0", "label": "tsconfig.json"}, {"id": "AGENTS.md", "path": "AGENTS.md", "type": "file", "language": "markdown", "lines": 23, "imports": ["https://docs.astro.build/en/guides/routing/", "https://docs.astro.build/en/basics/astro-components/", "https://docs.astro.build/en/guides/framework-components/", "https://docs.astro.build/en/guides/content-collections/", "https://docs.astro.build/en/guides/styling/", "https://docs.astro.build/en/guides/internationalization/"], "entities": [], "cluster": "#f5e0d0", "label": "AGENTS.md"}, {"id": "CLAUDE.md", "path": "CLAUDE.md", "type": "file", "language": "markdown", "lines": 23, "imports": ["https://docs.astro.build/en/guides/routing/", "https://docs.astro.build/en/basics/astro-components/", "https://docs.astro.build/en/guides/framework-components/", "https://docs.astro.build/en/guides/content-collections/", "https://docs.astro.build/en/guides/styling/", "https://docs.astro.build/en/guides/internationalization/"], "entities": [], "cluster": "#f5e0d0", "label": "CLAUDE.md"}, {"id": "package-lock.json", "path": "package-lock.json", "type": "file", "language": "json", "lines": 4984, "imports": [], "entities": [], "cluster": "#f5e0d0", "label": "package-lock.json"}, {"id": "astro.config.mjs", "path": "astro.config.mjs", "type": "file", "language": "javascript", "lines": 10, "imports": ["astro/config"], "entities": [], "cluster": "#f5e0d0", "label": "astro.config.mjs"}, {"id": "src/components/islands/Counter.tsx", "path": "src/components/islands/Counter.tsx", "type": "file", "language": "typescript", "lines": 46, "imports": ["preact/hooks"], "entities": [{"name": "Props", "kind": "interface", "line": 2}, {"name": "ref", "kind": "const", "line": 11}, {"name": "started", "kind": "const", "line": 12}, {"name": "el", "kind": "const", "line": 15}, {"name": "observer", "kind": "const", "line": 17}, {"name": "start", "kind": "const", "line": 22}, {"name": "animate", "kind": "const", "line": 23}, {"name": "progress", "kind": "const", "line": 24}, {"name": "eased", "kind": "const", "line": 25}], "cluster": "#8B1A1A", "label": "Counter.tsx"}, {"id": "src/components/islands/LocalTime.tsx", "path": "src/components/islands/LocalTime.tsx", "type": "file", "language": "typescript", "lines": 32, "imports": ["preact/hooks"], "entities": [{"name": "Props", "kind": "interface", "line": 2}, {"name": "update", "kind": "const", "line": 11}, {"name": "now", "kind": "const", "line": 12}, {"name": "id", "kind": "const", "line": 22}], "cluster": "#8B1A1A", "label": "LocalTime.tsx"}, {"id": "src/components/islands/ScrollReveal.tsx", "path": "src/components/islands/ScrollReveal.tsx", "type": "file", "language": "typescript", "lines": 27, "imports": ["preact/hooks"], "entities": [{"name": "els", "kind": "const", "line": 6}, {"name": "observer", "kind": "const", "line": 8}], "cluster": "#8B1A1A", "label": "ScrollReveal.tsx"}, {"id": "src/components/islands/ServicesAccordion.tsx", "path": "src/components/islands/ServicesAccordion.tsx", "type": "file", "language": "typescript", "lines": 42, "imports": ["preact/hooks"], "entities": [{"name": "Props", "kind": "interface", "line": 2}, {"name": "active", "kind": "const", "line": 13}], "cluster": "#8B1A1A", "label": "ServicesAccordion.tsx"}, {"id": "src/components/islands/FaqAccordion.tsx", "path": "src/components/islands/FaqAccordion.tsx", "type": "file", "language": "typescript", "lines": 48, "imports": ["preact/hooks"], "entities": [{"name": "FaqItem", "kind": "interface", "line": 2}, {"name": "Props", "kind": "interface", "line": 7}, {"name": "active", "kind": "const", "line": 19}], "cluster": "#8B1A1A", "label": "FaqAccordion.tsx"}, {"id": "src/components/islands/PricingTabs.tsx", "path": "src/components/islands/PricingTabs.tsx", "type": "file", "language": "typescript", "lines": 73, "imports": ["preact/hooks"], "entities": [{"name": "PricingPlan", "kind": "interface", "line": 2}, {"name": "Props", "kind": "interface", "line": 11}, {"name": "plan", "kind": "const", "line": 18}], "cluster": "#8B1A1A", "label": "PricingTabs.tsx"}, {"id": "src/components/islands/BudgetChooser.tsx", "path": "src/components/islands/BudgetChooser.tsx", "type": "file", "language": "typescript", "lines": 28, "imports": ["preact/hooks"], "entities": [{"name": "Props", "kind": "interface", "line": 2}], "cluster": "#8B1A1A", "label": "BudgetChooser.tsx"}, {"id": "src/components/islands/RightNav.tsx", "path": "src/components/islands/RightNav.tsx", "type": "file", "language": "typescript", "lines": 88, "imports": ["preact/hooks"], "entities": [{"name": "NavLink", "kind": "interface", "line": 2}, {"name": "Props", "kind": "interface", "line": 8}, {"name": "icons", "kind": "const", "line": 13}, {"name": "defaultNavLinks", "kind": "const", "line": 27}, {"name": "nav", "kind": "const", "line": 39}, {"name": "otherLang", "kind": "const", "line": 41}, {"name": "langLabel", "kind": "const", "line": 42}, {"name": "sections", "kind": "const", "line": 45}, {"name": "observer", "kind": "const", "line": 48}], "cluster": "#8B1A1A", "label": "RightNav.tsx"}, {"id": "src/components/sections/LeftStage.astro", "path": "src/components/sections/LeftStage.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "LeftStage.astro"}, {"id": "src/components/sections/Hero.astro", "path": "src/components/sections/Hero.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Hero.astro"}, {"id": "src/components/sections/Experiences.astro", "path": "src/components/sections/Experiences.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Experiences.astro"}, {"id": "src/components/sections/Works.astro", "path": "src/components/sections/Works.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Works.astro"}, {"id": "src/components/sections/About.astro", "path": "src/components/sections/About.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "About.astro"}, {"id": "src/components/sections/TechStack.astro", "path": "src/components/sections/TechStack.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "TechStack.astro"}, {"id": "src/components/sections/Partners.astro", "path": "src/components/sections/Partners.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Partners.astro"}, {"id": "src/components/sections/Process.astro", "path": "src/components/sections/Process.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Process.astro"}, {"id": "src/components/sections/Awards.astro", "path": "src/components/sections/Awards.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Awards.astro"}, {"id": "src/components/sections/Footer.astro", "path": "src/components/sections/Footer.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Footer.astro"}, {"id": "src/components/sections/Services.astro", "path": "src/components/sections/Services.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Services.astro"}, {"id": "src/components/sections/Pricing.astro", "path": "src/components/sections/Pricing.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Pricing.astro"}, {"id": "src/components/sections/Faqs.astro", "path": "src/components/sections/Faqs.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Faqs.astro"}, {"id": "src/components/sections/Contact.astro", "path": "src/components/sections/Contact.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Contact.astro"}, {"id": "src/layouts/Layout.astro", "path": "src/layouts/Layout.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "Layout.astro"}, {"id": "src/pages/index.astro", "path": "src/pages/index.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "index.astro"}, {"id": "src/pages/[lang]/index.astro", "path": "src/pages/[lang]/index.astro", "type": "file", "language": "astro", "lines": 0, "imports": [], "entities": [], "cluster": "#5C1010", "label": "[lang]/index.astro"}, {"id": "src/data/content.ts", "path": "src/data/content.ts", "type": "file", "language": "typescript", "lines": 59, "imports": ["../i18n/translations"], "entities": [{"name": "setLocale", "kind": "function", "line": 6}, {"name": "tr", "kind": "const", "line": 9}, {"name": "site", "kind": "function", "line": 16}, {"name": "s", "kind": "const", "line": 18}, {"name": "headings", "kind": "function", "line": 21}, {"name": "navLinks", "kind": "function", "line": 25}, {"name": "n", "kind": "const", "line": 27}, {"name": "tags", "kind": "function", "line": 41}, {"name": "stats", "kind": "function", "line": 43}, {"name": "experiences", "kind": "function", "line": 44}, {"name": "works", "kind": "function", "line": 45}, {"name": "services", "kind": "function", "line": 46}, {"name": "about", "kind": "function", "line": 47}, {"name": "education", "kind": "function", "line": 48}, {"name": "techStack", "kind": "function", "line": 49}, {"name": "partners", "kind": "function", "line": 50}, {"name": "process", "kind": "function", "line": 51}, {"name": "awards", "kind": "function", "line": 52}, {"name": "pricingPlans", "kind": "function", "line": 53}, {"name": "faqs", "kind": "function", "line": 54}, {"name": "socials", "kind": "function", "line": 55}, {"name": "budgetOptions", "kind": "function", "line": 56}], "cluster": "#8B1A1A", "label": "content.ts"}, {"id": "src/styles/global.css", "path": "src/styles/global.css", "type": "file", "language": "css", "lines": 0, "imports": [], "entities": [], "cluster": "#1a0a0a", "label": "global.css"}, {"id": "src/i18n/translations.ts", "path": "src/i18n/translations.ts", "type": "file", "language": "typescript", "lines": 14, "imports": [], "entities": [{"name": "Locale", "kind": "type", "line": 3}, {"name": "translations", "kind": "const", "line": 5}, {"name": "t", "kind": "function", "line": 7}, {"name": "defaultLocale", "kind": "const", "line": 11}, {"name": "locales", "kind": "const", "line": 13}], "cluster": "#8B1A1A", "label": "translations.ts"}, {"id": "src/i18n/locales/en.json", "path": "src/i18n/locales/en.json", "type": "file", "language": "json", "lines": 262, "imports": [], "entities": [], "cluster": "#3a1010", "label": "en.json"}, {"id": "src/i18n/locales/es.json", "path": "src/i18n/locales/es.json", "type": "file", "language": "json", "lines": 262, "imports": [], "entities": [], "cluster": "#3a1010", "label": "es.json"}, {"id": ".github/workflows/deploy.yml", "path": ".github/workflows/deploy.yml", "type": "file", "language": "yaml", "lines": 42, "imports": [], "entities": [], "cluster": "#f5e0d0", "label": "deploy.yml"}];
+
+var E=[{"source": "src/data/content.ts", "target": "src/i18n/translations.ts", "kind": "import"}];
+
+// Cluster colors legend
+var CC = {
+  "__root__": "#f5e0d0",
+  "src": "#8B1A1A",
+  ".astro": "#2a0808",
+  ".github": "#f5e0d0"
+};
+
+// Build legend
+var legendHtml = '';
+var i = 0;
+for (var key in CC) {
+  var label = key.replace(/\/$/, '');
+  var colors = ['#f5e0d0', '#8B1A1A', '#2a0808', '#f5e0d0'];
+  legendHtml += '<div class="lg"><span class="ld" style="background:' + CC[key] + '"></span>' + label + '</div>';
+}
+d3.select('.ll').html('<h3>Clusters</h3>' + legendHtml);
+
+// Update stats
+var fc = N.filter(function(d) { return d.type === 'file' && d.language && d.language !== 'unknown' && d.language !== 'media' && d.language !== 'css' && d.language !== 'astro'; }).length;
+var dc = N.filter(function(d) { return d.type === 'directory' || d.language === 'astro' || d.language === 'css'; }).length;
+d3.select('#statsbar').text(fc + ' files · ' + dc + ' dirs · ' + E.length + ' edges · tokens 8:1');
+
+var W = window.innerWidth, H = window.innerHeight - 62;
+var svg = d3.select("#g").append("svg").attr("width", W).attr("height", H)
+  .attr("style", "display:block;")
+  .call(d3.zoom().scaleExtent([0.05, 10]).on("zoom", function(e) {
+    g.attr("transform", e.transform);
+  }));
+
+// Add SVG defs for gradients and patterns
+var defs = svg.append("defs");
+
+// Radial gradient for vine edges
+var vineGrad = defs.append("radialGradient").attr("id", "vineGrad").attr("cx", "50%").attr("cy", "50%").attr("r", "50%");
+vineGrad.append("stop").attr("offset", "0%").attr("stop-color", "#8B1A1A").attr("stop-opacity", 0.4);
+vineGrad.append("stop").attr("offset", "100%").attr("stop-color", "#1a0a0a").attr("stop-opacity", 0);
+
+// Thorn filter glow
+var glow = defs.append("filter").attr("id", "glow");
+glow.append("feGaussianBlur").attr("stdDeviation", "3").attr("result", "coloredBlur");
+var feMerge = glow.append("feMerge");
+feMerge.append("feMergeNode").attr("in", "coloredBlur");
+feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+// Rose gradient for nodes
+var roseGrad = defs.append("radialGradient").attr("id", "roseGrad").attr("cx", "35%").attr("cy", "35%").attr("r", "65%");
+roseGrad.append("stop").attr("offset", "0%").attr("stop-color", "#d4a0a0").attr("stop-opacity", 0.6);
+roseGrad.append("stop").attr("offset", "50%").attr("stop-color", "#6b1818").attr("stop-opacity", 0.8);
+roseGrad.append("stop").attr("offset", "100%").attr("stop-color", "#2a0505").attr("stop-opacity", 1);
+
+// White rose gradient
+var whiteRoseGrad = defs.append("radialGradient").attr("id", "whiteRoseGrad").attr("cx", "35%").attr("cy", "35%").attr("r", "65%");
+whiteRoseGrad.append("stop").attr("offset", "0%").attr("stop-color", "#f5e8e0").attr("stop-opacity", 0.7);
+whiteRoseGrad.append("stop").attr("offset", "50%").attr("stop-color", "#d4c0b8").attr("stop-opacity", 0.6);
+whiteRoseGrad.append("stop").attr("offset", "100%").attr("stop-color", "#a09088").attr("stop-opacity", 0.5);
+
+// Black rose gradient
+var blackRoseGrad = defs.append("radialGradient").attr("id", "blackRoseGrad").attr("cx", "35%").attr("cy", "35%").attr("r", "65%");
+blackRoseGrad.append("stop").attr("offset", "0%").attr("stop-color", "#3a2020").attr("stop-opacity", 0.6);
+blackRoseGrad.append("stop").attr("offset", "50%").attr("stop-color", "#1a0a0a").attr("stop-opacity", 0.8);
+blackRoseGrad.append("stop").attr("offset", "100%").attr("stop-color", "#0a0505").attr("stop-opacity", 1);
+
+var g = svg.append("g");
+var tip = d3.select("#tip");
+
+function fi() {
+  var q = d3.select("#q").property("value").toLowerCase();
+  d3.selectAll(".nd").style("display", function(d) {
+    return !q ? null : (d.path.toLowerCase().includes(q) || d.label.toLowerCase().includes(q)) ? null : "none";
+  });
+  d3.selectAll(".lk").style("display", function(d) {
+    if (!q) return null;
+    var s = typeof d.source == "object" ? d.source.path : "", t = typeof d.target == "object" ? d.target.path : "";
+    return (s.toLowerCase().includes(q) || t.toLowerCase().includes(q)) ? null : "none";
+  });
+  var vn = 0, ve = 0;
+  d3.selectAll(".nd").each(function() { if (this.style.display != "none") vn++; });
+  d3.selectAll(".lk").each(function() { if (this.style.display != "none") ve++; });
+  d3.select("#nc").text(vn);
+  d3.select("#ec").text(ve);
+}
+
+var sim = d3.forceSimulation(N)
+  .force("link", d3.forceLink(E).id(function(d) { return d.id; }).distance(60).strength(0.15))
+  .force("charge", d3.forceManyBody().strength(-80))
+  .force("center", d3.forceCenter(W / 2, H / 2))
+  .force("collision", d3.forceCollide(12))
+  .alphaDecay(0.035).velocityDecay(0.3);
+
+// === VINE EDGES ===
+var link = g.append("g").selectAll("line").data(E).join("line")
+  .attr("class", "lk")
+  .attr("stroke", "#7b4949")
+  .attr("stroke-width", 0.8)
+  .attr("stroke-dasharray", "3,4")
+  .attr("opacity", 0.2);
+
+// Thorn decorations on edges
+var thornGroup = g.append("g").attr("class", "thorns");
+var thorns = thornGroup.selectAll("path").data(E).join("path")
+  .attr("class", "thorn")
+  .attr("fill", "#2d1515")
+  .attr("opacity", 0.08)
+  .attr("d", function(d) { return "M0,0 L3,-2 L0,4 Z"; });
+
+function getNodeColor(d) {
+  if (d.type === "directory") return "#1a0a0a";
+  var c = d.cluster || "#8B1A1A";
+  if (c === "#f5e0d0" || c === "#f5e8e0") return "url(#whiteRoseGrad)";
+  if (c === "#2a0808" || c === "#1a0a0a") return "url(#blackRoseGrad)";
+  return "url(#roseGrad)";
+}
+
+function getNodeStroke(d) {
+  if (d.type === "directory") return "rgba(180,100,100,0.2)";
+  var c = d.cluster || "#8B1A1A";
+  if (c === "#f5e0d0" || c === "#f5e8e0") return "rgba(220,190,180,0.3)";
+  if (c === "#2a0808" || c === "#1a0a0a") return "rgba(100,40,40,0.15)";
+  return "rgba(180,60,60,0.15)";
+}
+
+function getNodeR(d) {
+  if (d.type === "directory") return 10;
+  return 5 + Math.min((d.lines || 0) / 300, 7);
+}
+
+// === NODES — ROSE INSPIRED ===
+var node = g.append("g").selectAll("g").data(N).join("g").attr("class", "nd")
+  .call(d3.drag()
+    .on("start", function(e, d) { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+    .on("drag", function(e, d) { d.fx = e.x; d.fy = e.y; })
+    .on("end", function(e, d) { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+// Outer glow circle
+node.append("circle")
+  .attr("class", "rose-glow")
+  .attr("r", function(d) { return getNodeR(d) + 4; })
+  .attr("fill", function(d) {
+    var c = d.cluster || "#8B1A1A";
+    if (c === "#f5e0d0") return "rgba(220,190,180,0.03)";
+    if (c === "#2a0808") return "rgba(100,30,30,0.03)";
+    return "rgba(180,60,60,0.04)";
+  })
+  .attr("stroke", "none")
+  .attr("opacity", 0.5);
+
+// Main node circle (the rose)
+node.append("circle")
+  .attr("class", "rose-node")
+  .attr("r", getNodeR)
+  .attr("fill", getNodeColor)
+  .attr("stroke", getNodeStroke)
+  .attr("stroke-width", function(d) { return d.type === "directory" ? 2 : 1; })
+  .attr("opacity", function(d) { return d.type === "directory" ? 0.6 : 1; });
+
+// Inner petal detail for larger nodes
+node.filter(function(d) { return (d.lines || 0) > 30 || d.type === "directory"; })
+  .append("circle")
+  .attr("class", "rose-petal")
+  .attr("r", function(d) { return Math.max(2, getNodeR(d) * 0.4); })
+  .attr("fill", "none")
+  .attr("stroke", function(d) {
+    var c = d.cluster || "#8B1A1A";
+    if (c === "#f5e0d0") return "rgba(240,220,210,0.15)";
+    return "rgba(220,180,180,0.1)";
+  })
+  .attr("stroke-width", 0.5)
+  .attr("opacity", 0.6);
+
+// Text label
+node.append("text")
+  .attr("dx", function(d) { return getNodeR(d) + 6; })
+  .attr("dy", 3.5)
+  .text(function(d) { return d.label; })
+  .attr("fill", function(d) {
+    var c = d.cluster || "#8B1A1A";
+    if (c === "#f5e0d0") return "rgba(220,200,190,0.6)";
+    if (c === "#2a0808") return "rgba(180,150,140,0.4)";
+    return "rgba(200,160,150,0.8)";
+  })
+  .attr("font-size", function(d) { return d.type === "directory" ? "11px" : "10px"; })
+  .attr("font-weight", function(d) { return d.type === "directory" ? 600 : 300; })
+  .style("font-style", "italic");
+
+// === TOOLTIP ===
+node.on("mouseenter", function(e, d) {
+  var r = e.target.getBoundingClientRect();
+  var ll = d.language || "unknown";
+  var ic = d.imports ? d.imports.length : 0, ei = d.entities ? d.entities.length : 0;
+  var lh = d.lines ? " " + d.lines + " lines" : "";
+  var ei_html = ei ? "<br>" + ei + " entities" : "";
+  var imp_html = ic ? '<div class="ti">❧ ' + d.imports.slice(0, 8).join(", ") + (d.imports.length > 8 ? ", +…" : "") + "</div>" : "";
+  tip.style("display", "block")
+    .style("left", Math.min(r.right + 18, W - 440) + "px")
+    .style("top", Math.max(66, Math.min(r.top - 6, H - 200)) + "px")
+    .html('<div class="tp">' + d.path + '</div><div class="tm">' + ll + lh + ei_html + '</div>' + imp_html);
+})
+.on("mouseleave", function() { tip.style("display", "none"); });
+
+// === TICK ===
+sim.on("tick", function() {
+  link
+    .attr("x1", function(d) { return d.source.x; })
+    .attr("y1", function(d) { return d.source.y; })
+    .attr("x2", function(d) { return d.target.x; })
+    .attr("y2", function(d) { return d.target.y; });
+
+  thorns.attr("transform", function(d) {
+    var mx = (d.source.x + d.target.x) / 2;
+    var my = (d.source.y + d.target.y) / 2;
+    var dx = d.target.x - d.source.x;
+    var dy = d.target.y - d.source.y;
+    var angle = Math.atan2(dy, dx) * 180 / Math.PI;
+    return "translate(" + mx + "," + my + ") rotate(" + angle + ") scale(0.8)";
+  });
+
+  node.attr("transform", function(d) {
+    return "translate(" + d.x.toFixed(1) + "," + d.y.toFixed(1) + ")";
+  });
+});
+
+function uc() {
+  var vn = 0, ve = 0;
+  d3.selectAll(".nd").each(function() { vn++; });
+  d3.selectAll(".lk").each(function() { ve++; });
+  d3.select("#nc").text(vn);
+  d3.select("#ec").text(ve);
+}
+sim.on("end", uc);
+setTimeout(function() { sim.stop(); uc(); }, 35000);
+uc();
+</script>
+</body>
+</html>

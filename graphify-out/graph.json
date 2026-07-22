@@ -1,0 +1,1593 @@
+{
+  "project": {
+    "name": "stuko-portfoglio",
+    "root": "/home/stuko/projects/stuko-portfoglio",
+    "total_files": 49,
+    "total_dirs": 16,
+    "total_lines": 6334,
+    "total_tokens_estimate": 54690,
+    "graph_tokens": 6186,
+    "graph_size_bytes": 24747,
+    "token_ratio": "8:1",
+    "total_edges": 75
+  },
+  "nodes": [
+    {
+      "id": ".gitignore",
+      "path": ".gitignore",
+      "type": "file",
+      "ext": "",
+      "size_bytes": 264
+    },
+    {
+      "id": "README.md",
+      "path": "README.md",
+      "type": "file",
+      "ext": ".md",
+      "language": "markdown",
+      "lines": 57,
+      "size_bytes": 1793,
+      "imports": [
+        "https://wpriverthemes.com/HTML/jayden/index.html"
+      ]
+    },
+    {
+      "id": "package.json",
+      "path": "package.json",
+      "type": "file",
+      "ext": ".json",
+      "language": "json",
+      "lines": 20,
+      "size_bytes": 350
+    },
+    {
+      "id": "tsconfig.json",
+      "path": "tsconfig.json",
+      "type": "file",
+      "ext": ".json",
+      "language": "json",
+      "lines": 14,
+      "size_bytes": 212
+    },
+    {
+      "id": "AGENTS.md",
+      "path": "AGENTS.md",
+      "type": "file",
+      "ext": ".md",
+      "language": "markdown",
+      "lines": 23,
+      "size_bytes": 874,
+      "imports": [
+        "https://docs.astro.build/en/guides/routing/",
+        "https://docs.astro.build/en/basics/astro-components/",
+        "https://docs.astro.build/en/guides/framework-components/",
+        "https://docs.astro.build/en/guides/content-collections/",
+        "https://docs.astro.build/en/guides/styling/",
+        "https://docs.astro.build/en/guides/internationalization/"
+      ]
+    },
+    {
+      "id": "CLAUDE.md",
+      "path": "CLAUDE.md",
+      "type": "file",
+      "ext": ".md",
+      "language": "markdown",
+      "lines": 23,
+      "size_bytes": 874,
+      "imports": [
+        "https://docs.astro.build/en/guides/routing/",
+        "https://docs.astro.build/en/basics/astro-components/",
+        "https://docs.astro.build/en/guides/framework-components/",
+        "https://docs.astro.build/en/guides/content-collections/",
+        "https://docs.astro.build/en/guides/styling/",
+        "https://docs.astro.build/en/guides/internationalization/"
+      ]
+    },
+    {
+      "id": "package-lock.json",
+      "path": "package-lock.json",
+      "type": "file",
+      "ext": ".json",
+      "language": "json",
+      "lines": 4984,
+      "size_bytes": 176111
+    },
+    {
+      "id": "CNAME",
+      "path": "CNAME",
+      "type": "file",
+      "ext": "",
+      "size_bytes": 9
+    },
+    {
+      "id": "astro.config.mjs",
+      "path": "astro.config.mjs",
+      "type": "file",
+      "ext": ".mjs",
+      "language": "javascript",
+      "lines": 10,
+      "size_bytes": 217,
+      "imports": [
+        "astro/config"
+      ]
+    },
+    {
+      "id": "public/favicon.ico",
+      "path": "public/favicon.ico",
+      "type": "file",
+      "ext": ".ico",
+      "size_bytes": 655,
+      "media": {
+        "format": "ico",
+        "size_bytes": 655,
+        "type": "image"
+      },
+      "language": "media"
+    },
+    {
+      "id": "public/favicon.svg",
+      "path": "public/favicon.svg",
+      "type": "file",
+      "ext": ".svg",
+      "size_bytes": 341,
+      "media": {
+        "format": "svg",
+        "size_bytes": 341,
+        "type": "image"
+      },
+      "language": "media"
+    },
+    {
+      "id": "public/CNAME",
+      "path": "public/CNAME",
+      "type": "file",
+      "ext": "",
+      "size_bytes": 9
+    },
+    {
+      "id": "src/assets/astro.svg",
+      "path": "src/assets/astro.svg",
+      "type": "file",
+      "ext": ".svg",
+      "size_bytes": 2914,
+      "media": {
+        "format": "svg",
+        "size_bytes": 2914,
+        "type": "image"
+      },
+      "language": "media"
+    },
+    {
+      "id": "src/assets/background.svg",
+      "path": "src/assets/background.svg",
+      "type": "file",
+      "ext": ".svg",
+      "size_bytes": 1454,
+      "media": {
+        "format": "svg",
+        "size_bytes": 1454,
+        "type": "image"
+      },
+      "language": "media"
+    },
+    {
+      "id": "src/components/islands/Counter.tsx",
+      "path": "src/components/islands/Counter.tsx",
+      "type": "file",
+      "ext": ".tsx",
+      "language": "typescript",
+      "lines": 46,
+      "size_bytes": 1272,
+      "imports": [
+        "preact/hooks"
+      ],
+      "entities": [
+        {
+          "name": "Props",
+          "kind": "interface",
+          "line": 2
+        },
+        {
+          "name": "ref",
+          "kind": "const",
+          "line": 11
+        },
+        {
+          "name": "started",
+          "kind": "const",
+          "line": 12
+        },
+        {
+          "name": "el",
+          "kind": "const",
+          "line": 15
+        },
+        {
+          "name": "observer",
+          "kind": "const",
+          "line": 17
+        },
+        {
+          "name": "start",
+          "kind": "const",
+          "line": 22
+        },
+        {
+          "name": "animate",
+          "kind": "const",
+          "line": 23
+        },
+        {
+          "name": "progress",
+          "kind": "const",
+          "line": 24
+        },
+        {
+          "name": "eased",
+          "kind": "const",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "src/components/islands/LocalTime.tsx",
+      "path": "src/components/islands/LocalTime.tsx",
+      "type": "file",
+      "ext": ".tsx",
+      "language": "typescript",
+      "lines": 32,
+      "size_bytes": 651,
+      "imports": [
+        "preact/hooks"
+      ],
+      "entities": [
+        {
+          "name": "Props",
+          "kind": "interface",
+          "line": 2
+        },
+        {
+          "name": "update",
+          "kind": "const",
+          "line": 11
+        },
+        {
+          "name": "now",
+          "kind": "const",
+          "line": 12
+        },
+        {
+          "name": "id",
+          "kind": "const",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "id": "src/components/islands/ScrollReveal.tsx",
+      "path": "src/components/islands/ScrollReveal.tsx",
+      "type": "file",
+      "ext": ".tsx",
+      "language": "typescript",
+      "lines": 27,
+      "size_bytes": 702,
+      "imports": [
+        "preact/hooks"
+      ],
+      "entities": [
+        {
+          "name": "els",
+          "kind": "const",
+          "line": 6
+        },
+        {
+          "name": "observer",
+          "kind": "const",
+          "line": 8
+        }
+      ]
+    },
+    {
+      "id": "src/components/islands/ServicesAccordion.tsx",
+      "path": "src/components/islands/ServicesAccordion.tsx",
+      "type": "file",
+      "ext": ".tsx",
+      "language": "typescript",
+      "lines": 42,
+      "size_bytes": 1248,
+      "imports": [
+        "preact/hooks"
+      ],
+      "entities": [
+        {
+          "name": "Props",
+          "kind": "interface",
+          "line": 2
+        },
+        {
+          "name": "active",
+          "kind": "const",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "id": "src/components/islands/FaqAccordion.tsx",
+      "path": "src/components/islands/FaqAccordion.tsx",
+      "type": "file",
+      "ext": ".tsx",
+      "language": "typescript",
+      "lines": 48,
+      "size_bytes": 1170,
+      "imports": [
+        "preact/hooks"
+      ],
+      "entities": [
+        {
+          "name": "FaqItem",
+          "kind": "interface",
+          "line": 2
+        },
+        {
+          "name": "Props",
+          "kind": "interface",
+          "line": 7
+        },
+        {
+          "name": "active",
+          "kind": "const",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "id": "src/components/islands/PricingTabs.tsx",
+      "path": "src/components/islands/PricingTabs.tsx",
+      "type": "file",
+      "ext": ".tsx",
+      "language": "typescript",
+      "lines": 73,
+      "size_bytes": 1898,
+      "imports": [
+        "preact/hooks"
+      ],
+      "entities": [
+        {
+          "name": "PricingPlan",
+          "kind": "interface",
+          "line": 2
+        },
+        {
+          "name": "Props",
+          "kind": "interface",
+          "line": 11
+        },
+        {
+          "name": "plan",
+          "kind": "const",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "id": "src/components/islands/BudgetChooser.tsx",
+      "path": "src/components/islands/BudgetChooser.tsx",
+      "type": "file",
+      "ext": ".tsx",
+      "language": "typescript",
+      "lines": 28,
+      "size_bytes": 699,
+      "imports": [
+        "preact/hooks"
+      ],
+      "entities": [
+        {
+          "name": "Props",
+          "kind": "interface",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "src/components/islands/RightNav.tsx",
+      "path": "src/components/islands/RightNav.tsx",
+      "type": "file",
+      "ext": ".tsx",
+      "language": "typescript",
+      "lines": 88,
+      "size_bytes": 2280,
+      "imports": [
+        "preact/hooks"
+      ],
+      "entities": [
+        {
+          "name": "NavLink",
+          "kind": "interface",
+          "line": 2
+        },
+        {
+          "name": "Props",
+          "kind": "interface",
+          "line": 8
+        },
+        {
+          "name": "icons",
+          "kind": "const",
+          "line": 13
+        },
+        {
+          "name": "defaultNavLinks",
+          "kind": "const",
+          "line": 27
+        },
+        {
+          "name": "nav",
+          "kind": "const",
+          "line": 39
+        },
+        {
+          "name": "otherLang",
+          "kind": "const",
+          "line": 41
+        },
+        {
+          "name": "langLabel",
+          "kind": "const",
+          "line": 42
+        },
+        {
+          "name": "sections",
+          "kind": "const",
+          "line": 45
+        },
+        {
+          "name": "observer",
+          "kind": "const",
+          "line": 48
+        }
+      ]
+    },
+    {
+      "id": "src/components/sections/LeftStage.astro",
+      "path": "src/components/sections/LeftStage.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 3762
+    },
+    {
+      "id": "src/components/sections/Hero.astro",
+      "path": "src/components/sections/Hero.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 1327
+    },
+    {
+      "id": "src/components/sections/Experiences.astro",
+      "path": "src/components/sections/Experiences.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 850
+    },
+    {
+      "id": "src/components/sections/Works.astro",
+      "path": "src/components/sections/Works.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 1996
+    },
+    {
+      "id": "src/components/sections/About.astro",
+      "path": "src/components/sections/About.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 1488
+    },
+    {
+      "id": "src/components/sections/TechStack.astro",
+      "path": "src/components/sections/TechStack.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 600
+    },
+    {
+      "id": "src/components/sections/Partners.astro",
+      "path": "src/components/sections/Partners.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 585
+    },
+    {
+      "id": "src/components/sections/Process.astro",
+      "path": "src/components/sections/Process.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 584
+    },
+    {
+      "id": "src/components/sections/Awards.astro",
+      "path": "src/components/sections/Awards.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 630
+    },
+    {
+      "id": "src/components/sections/Footer.astro",
+      "path": "src/components/sections/Footer.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 1082
+    },
+    {
+      "id": "src/components/sections/Services.astro",
+      "path": "src/components/sections/Services.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 830
+    },
+    {
+      "id": "src/components/sections/Pricing.astro",
+      "path": "src/components/sections/Pricing.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 329
+    },
+    {
+      "id": "src/components/sections/Faqs.astro",
+      "path": "src/components/sections/Faqs.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 372
+    },
+    {
+      "id": "src/components/sections/Contact.astro",
+      "path": "src/components/sections/Contact.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 2251
+    },
+    {
+      "id": "src/layouts/Layout.astro",
+      "path": "src/layouts/Layout.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 1484
+    },
+    {
+      "id": "src/pages/index.astro",
+      "path": "src/pages/index.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 156
+    },
+    {
+      "id": "src/pages/[lang]/index.astro",
+      "path": "src/pages/[lang]/index.astro",
+      "type": "file",
+      "ext": ".astro",
+      "size_bytes": 1751
+    },
+    {
+      "id": "src/data/content.ts",
+      "path": "src/data/content.ts",
+      "type": "file",
+      "ext": ".ts",
+      "language": "typescript",
+      "lines": 59,
+      "size_bytes": 2242,
+      "imports": [
+        "../i18n/translations"
+      ],
+      "entities": [
+        {
+          "name": "setLocale",
+          "kind": "function",
+          "line": 6
+        },
+        {
+          "name": "tr",
+          "kind": "const",
+          "line": 9
+        },
+        {
+          "name": "site",
+          "kind": "function",
+          "line": 16
+        },
+        {
+          "name": "s",
+          "kind": "const",
+          "line": 18
+        },
+        {
+          "name": "headings",
+          "kind": "function",
+          "line": 21
+        },
+        {
+          "name": "navLinks",
+          "kind": "function",
+          "line": 25
+        },
+        {
+          "name": "n",
+          "kind": "const",
+          "line": 27
+        },
+        {
+          "name": "tags",
+          "kind": "function",
+          "line": 41
+        },
+        {
+          "name": "stats",
+          "kind": "function",
+          "line": 43
+        },
+        {
+          "name": "experiences",
+          "kind": "function",
+          "line": 44
+        },
+        {
+          "name": "works",
+          "kind": "function",
+          "line": 45
+        },
+        {
+          "name": "services",
+          "kind": "function",
+          "line": 46
+        },
+        {
+          "name": "about",
+          "kind": "function",
+          "line": 47
+        },
+        {
+          "name": "education",
+          "kind": "function",
+          "line": 48
+        },
+        {
+          "name": "techStack",
+          "kind": "function",
+          "line": 49
+        },
+        {
+          "name": "partners",
+          "kind": "function",
+          "line": 50
+        },
+        {
+          "name": "process",
+          "kind": "function",
+          "line": 51
+        },
+        {
+          "name": "awards",
+          "kind": "function",
+          "line": 52
+        },
+        {
+          "name": "pricingPlans",
+          "kind": "function",
+          "line": 53
+        },
+        {
+          "name": "faqs",
+          "kind": "function",
+          "line": 54
+        },
+        {
+          "name": "socials",
+          "kind": "function",
+          "line": 55
+        },
+        {
+          "name": "budgetOptions",
+          "kind": "function",
+          "line": 56
+        }
+      ]
+    },
+    {
+      "id": "src/styles/global.css",
+      "path": "src/styles/global.css",
+      "type": "file",
+      "ext": ".css",
+      "size_bytes": 31113
+    },
+    {
+      "id": "src/i18n/translations.ts",
+      "path": "src/i18n/translations.ts",
+      "type": "file",
+      "ext": ".ts",
+      "language": "typescript",
+      "lines": 14,
+      "size_bytes": 346,
+      "entities": [
+        {
+          "name": "Locale",
+          "kind": "type",
+          "line": 3
+        },
+        {
+          "name": "translations",
+          "kind": "const",
+          "line": 5
+        },
+        {
+          "name": "t",
+          "kind": "function",
+          "line": 7
+        },
+        {
+          "name": "defaultLocale",
+          "kind": "const",
+          "line": 11
+        },
+        {
+          "name": "locales",
+          "kind": "const",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "id": "src/i18n/locales/en.json",
+      "path": "src/i18n/locales/en.json",
+      "type": "file",
+      "ext": ".json",
+      "language": "json",
+      "lines": 262,
+      "size_bytes": 9502
+    },
+    {
+      "id": "src/i18n/locales/es.json",
+      "path": "src/i18n/locales/es.json",
+      "type": "file",
+      "ext": ".json",
+      "language": "json",
+      "lines": 262,
+      "size_bytes": 9914
+    },
+    {
+      "id": ".astro/content.d.ts",
+      "path": ".astro/content.d.ts",
+      "type": "file",
+      "ext": ".ts",
+      "language": "typescript",
+      "lines": 160,
+      "size_bytes": 5477,
+      "entities": [
+        {
+          "name": "RenderResult",
+          "kind": "interface",
+          "line": 2
+        },
+        {
+          "name": "Render",
+          "kind": "interface",
+          "line": 7
+        },
+        {
+          "name": "RenderedContent",
+          "kind": "interface",
+          "line": 10
+        },
+        {
+          "name": "Flatten",
+          "kind": "type",
+          "line": 18
+        },
+        {
+          "name": "CollectionKey",
+          "kind": "type",
+          "line": 20
+        },
+        {
+          "name": "CollectionEntry",
+          "kind": "type",
+          "line": 22
+        },
+        {
+          "name": "AllValuesOf",
+          "kind": "type",
+          "line": 23
+        },
+        {
+          "name": "ReferenceDataEntry",
+          "kind": "type",
+          "line": 25
+        },
+        {
+          "name": "ReferenceLiveEntry",
+          "kind": "type",
+          "line": 33
+        },
+        {
+          "name": "getCollection",
+          "kind": "function",
+          "line": 38
+        },
+        {
+          "name": "getCollection",
+          "kind": "function",
+          "line": 43
+        },
+        {
+          "name": "getLiveCollection",
+          "kind": "function",
+          "line": 47
+        },
+        {
+          "name": "getEntry",
+          "kind": "function",
+          "line": 54
+        },
+        {
+          "name": "getEntry",
+          "kind": "function",
+          "line": 63
+        },
+        {
+          "name": "getLiveEntry",
+          "kind": "function",
+          "line": 74
+        },
+        {
+          "name": "getEntries",
+          "kind": "function",
+          "line": 80
+        },
+        {
+          "name": "render",
+          "kind": "function",
+          "line": 83
+        },
+        {
+          "name": "render",
+          "kind": "function",
+          "line": 87
+        },
+        {
+          "name": "reference",
+          "kind": "function",
+          "line": 91
+        },
+        {
+          "name": "ReturnTypeOrOriginal",
+          "kind": "type",
+          "line": 113
+        },
+        {
+          "name": "InferEntrySchema",
+          "kind": "type",
+          "line": 115
+        },
+        {
+          "name": "ExtractLoaderConfig",
+          "kind": "type",
+          "line": 118
+        },
+        {
+          "name": "InferLoaderSchema",
+          "kind": "type",
+          "line": 119
+        },
+        {
+          "name": "DataEntryMap",
+          "kind": "type",
+          "line": 125
+        },
+        {
+          "name": "ExtractLoaderTypes",
+          "kind": "type",
+          "line": 129
+        },
+        {
+          "name": "ExtractEntryFilterType",
+          "kind": "type",
+          "line": 138
+        },
+        {
+          "name": "ExtractCollectionFilterType",
+          "kind": "type",
+          "line": 139
+        },
+        {
+          "name": "ExtractErrorType",
+          "kind": "type",
+          "line": 140
+        },
+        {
+          "name": "ExtractDataType",
+          "kind": "type",
+          "line": 141
+        },
+        {
+          "name": "LiveLoaderDataType",
+          "kind": "type",
+          "line": 142
+        },
+        {
+          "name": "LiveLoaderEntryFilterType",
+          "kind": "type",
+          "line": 149
+        },
+        {
+          "name": "LiveLoaderCollectionFilterType",
+          "kind": "type",
+          "line": 151
+        },
+        {
+          "name": "LiveLoaderErrorType",
+          "kind": "type",
+          "line": 153
+        },
+        {
+          "name": "ContentConfig",
+          "kind": "type",
+          "line": 156
+        },
+        {
+          "name": "LiveContentConfig",
+          "kind": "type",
+          "line": 158
+        }
+      ]
+    },
+    {
+      "id": ".astro/types.d.ts",
+      "path": ".astro/types.d.ts",
+      "type": "file",
+      "ext": ".ts",
+      "language": "typescript",
+      "lines": 2,
+      "size_bytes": 76
+    },
+    {
+      "id": ".astro/dev.json",
+      "path": ".astro/dev.json",
+      "type": "file",
+      "ext": ".json",
+      "language": "json",
+      "lines": 13,
+      "size_bytes": 207
+    },
+    {
+      "id": ".astro/settings.json",
+      "path": ".astro/settings.json",
+      "type": "file",
+      "ext": ".json",
+      "language": "json",
+      "lines": 5,
+      "size_bytes": 58
+    },
+    {
+      "id": ".github/workflows/deploy.yml",
+      "path": ".github/workflows/deploy.yml",
+      "type": "file",
+      "ext": ".yml",
+      "language": "yaml",
+      "lines": 42,
+      "size_bytes": 782
+    },
+    {
+      "id": ".astro/",
+      "path": ".astro",
+      "type": "directory",
+      "children": [
+        ".astro/content.d.ts",
+        ".astro/dev.json",
+        ".astro/settings.json",
+        ".astro/types.d.ts"
+      ]
+    },
+    {
+      "id": ".github/",
+      "path": ".github",
+      "type": "directory",
+      "children": [
+        ".github/workflows/"
+      ]
+    },
+    {
+      "id": "public/",
+      "path": "public",
+      "type": "directory",
+      "children": [
+        "public/CNAME",
+        "public/favicon.ico",
+        "public/favicon.svg"
+      ]
+    },
+    {
+      "id": "src/",
+      "path": "src",
+      "type": "directory",
+      "children": [
+        "src/assets/",
+        "src/components/",
+        "src/data/",
+        "src/i18n/",
+        "src/layouts/",
+        "src/pages/",
+        "src/styles/"
+      ]
+    },
+    {
+      "id": ".github/workflows/",
+      "path": ".github/workflows",
+      "type": "directory",
+      "children": [
+        ".github/workflows/deploy.yml"
+      ]
+    },
+    {
+      "id": "src/assets/",
+      "path": "src/assets",
+      "type": "directory",
+      "children": [
+        "src/assets/astro.svg",
+        "src/assets/background.svg"
+      ]
+    },
+    {
+      "id": "src/components/",
+      "path": "src/components",
+      "type": "directory",
+      "children": [
+        "src/components/islands/",
+        "src/components/sections/"
+      ]
+    },
+    {
+      "id": "src/data/",
+      "path": "src/data",
+      "type": "directory",
+      "children": [
+        "src/data/content.ts"
+      ]
+    },
+    {
+      "id": "src/i18n/",
+      "path": "src/i18n",
+      "type": "directory",
+      "children": [
+        "src/i18n/locales/",
+        "src/i18n/translations.ts"
+      ]
+    },
+    {
+      "id": "src/layouts/",
+      "path": "src/layouts",
+      "type": "directory",
+      "children": [
+        "src/layouts/Layout.astro"
+      ]
+    },
+    {
+      "id": "src/pages/",
+      "path": "src/pages",
+      "type": "directory",
+      "children": [
+        "src/pages/[lang]/",
+        "src/pages/index.astro"
+      ]
+    },
+    {
+      "id": "src/styles/",
+      "path": "src/styles",
+      "type": "directory",
+      "children": [
+        "src/styles/global.css"
+      ]
+    },
+    {
+      "id": "src/components/islands/",
+      "path": "src/components/islands",
+      "type": "directory",
+      "children": [
+        "src/components/islands/BudgetChooser.tsx",
+        "src/components/islands/Counter.tsx",
+        "src/components/islands/FaqAccordion.tsx",
+        "src/components/islands/LocalTime.tsx",
+        "src/components/islands/PricingTabs.tsx",
+        "src/components/islands/RightNav.tsx",
+        "src/components/islands/ScrollReveal.tsx",
+        "src/components/islands/ServicesAccordion.tsx"
+      ]
+    },
+    {
+      "id": "src/components/sections/",
+      "path": "src/components/sections",
+      "type": "directory",
+      "children": [
+        "src/components/sections/About.astro",
+        "src/components/sections/Awards.astro",
+        "src/components/sections/Contact.astro",
+        "src/components/sections/Experiences.astro",
+        "src/components/sections/Faqs.astro",
+        "src/components/sections/Footer.astro",
+        "src/components/sections/Hero.astro",
+        "src/components/sections/LeftStage.astro",
+        "src/components/sections/Partners.astro",
+        "src/components/sections/Pricing.astro",
+        "src/components/sections/Process.astro",
+        "src/components/sections/Services.astro",
+        "src/components/sections/TechStack.astro",
+        "src/components/sections/Works.astro"
+      ]
+    },
+    {
+      "id": "src/i18n/locales/",
+      "path": "src/i18n/locales",
+      "type": "directory",
+      "children": [
+        "src/i18n/locales/en.json",
+        "src/i18n/locales/es.json"
+      ]
+    },
+    {
+      "id": "src/pages/[lang]/",
+      "path": "src/pages/[lang]",
+      "type": "directory",
+      "children": [
+        "src/pages/[lang]/index.astro"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "README.md",
+      "to": "https://wpriverthemes.com/HTML/jayden/index.html",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "AGENTS.md",
+      "to": "https://docs.astro.build/en/guides/routing/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "AGENTS.md",
+      "to": "https://docs.astro.build/en/basics/astro-components/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "AGENTS.md",
+      "to": "https://docs.astro.build/en/guides/framework-components/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "AGENTS.md",
+      "to": "https://docs.astro.build/en/guides/content-collections/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "AGENTS.md",
+      "to": "https://docs.astro.build/en/guides/styling/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "AGENTS.md",
+      "to": "https://docs.astro.build/en/guides/internationalization/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "https://docs.astro.build/en/guides/routing/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "https://docs.astro.build/en/basics/astro-components/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "https://docs.astro.build/en/guides/framework-components/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "https://docs.astro.build/en/guides/content-collections/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "https://docs.astro.build/en/guides/styling/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "https://docs.astro.build/en/guides/internationalization/",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "astro.config.mjs",
+      "to": "astro/config",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "src/components/islands/Counter.tsx",
+      "to": "preact/hooks",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "src/components/islands/LocalTime.tsx",
+      "to": "preact/hooks",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "src/components/islands/ScrollReveal.tsx",
+      "to": "preact/hooks",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "src/components/islands/ServicesAccordion.tsx",
+      "to": "preact/hooks",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "src/components/islands/FaqAccordion.tsx",
+      "to": "preact/hooks",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "src/components/islands/PricingTabs.tsx",
+      "to": "preact/hooks",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "src/components/islands/BudgetChooser.tsx",
+      "to": "preact/hooks",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "src/components/islands/RightNav.tsx",
+      "to": "preact/hooks",
+      "kind": "import",
+      "type": "external"
+    },
+    {
+      "from": "src/data/content.ts",
+      "to": "src/i18n/translations.ts",
+      "kind": "import",
+      "type": "local"
+    },
+    {
+      "from": ".astro/",
+      "to": ".astro/types.d.ts",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": ".astro/",
+      "to": ".astro/dev.json",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": ".astro/",
+      "to": ".astro/settings.json",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": ".astro/",
+      "to": ".astro/content.d.ts",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": ".github/",
+      "to": ".github/workflows/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "public/",
+      "to": "public/favicon.svg",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "public/",
+      "to": "public/favicon.ico",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "public/",
+      "to": "public/CNAME",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/",
+      "to": "src/data/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/",
+      "to": "src/pages/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/",
+      "to": "src/assets/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/",
+      "to": "src/styles/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/",
+      "to": "src/components/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/",
+      "to": "src/i18n/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/",
+      "to": "src/layouts/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": ".github/workflows/",
+      "to": ".github/workflows/deploy.yml",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/assets/",
+      "to": "src/assets/astro.svg",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/assets/",
+      "to": "src/assets/background.svg",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/",
+      "to": "src/components/islands/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/",
+      "to": "src/components/sections/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/data/",
+      "to": "src/data/content.ts",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/i18n/",
+      "to": "src/i18n/translations.ts",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/i18n/",
+      "to": "src/i18n/locales/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/layouts/",
+      "to": "src/layouts/Layout.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/pages/",
+      "to": "src/pages/index.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/pages/",
+      "to": "src/pages/[lang]/",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/styles/",
+      "to": "src/styles/global.css",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/islands/",
+      "to": "src/components/islands/BudgetChooser.tsx",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/islands/",
+      "to": "src/components/islands/RightNav.tsx",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/islands/",
+      "to": "src/components/islands/PricingTabs.tsx",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/islands/",
+      "to": "src/components/islands/LocalTime.tsx",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/islands/",
+      "to": "src/components/islands/ServicesAccordion.tsx",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/islands/",
+      "to": "src/components/islands/Counter.tsx",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/islands/",
+      "to": "src/components/islands/ScrollReveal.tsx",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/islands/",
+      "to": "src/components/islands/FaqAccordion.tsx",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Services.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Footer.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Pricing.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/TechStack.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Faqs.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/LeftStage.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Contact.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/About.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Works.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Awards.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Process.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Experiences.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Hero.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/components/sections/",
+      "to": "src/components/sections/Partners.astro",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/i18n/locales/",
+      "to": "src/i18n/locales/es.json",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/i18n/locales/",
+      "to": "src/i18n/locales/en.json",
+      "kind": "contains",
+      "type": "local"
+    },
+    {
+      "from": "src/pages/[lang]/",
+      "to": "src/pages/[lang]/index.astro",
+      "kind": "contains",
+      "type": "local"
+    }
+  ]
+}
