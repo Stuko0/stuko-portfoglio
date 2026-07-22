@@ -1,44 +1,51 @@
-/* =========================================================
-   Stuko Portfoglio — Alice: Madness Returns × Jayden layout
-   ========================================================= */
+/* ============================================================
+   Stuko Portfoglio — Heartless Redesign
+   Based on Heartless (Marissa Meyer) aesthetic:
+   dark royal gothic, gold filigree, crimson blood, white roses
+   ============================================================ */
 
 :root {
-  /* Alice Madness Returns palette */
-  --bg: #0a0508;
-  --bg-elevated: #12080c;
-  --bg-card: #1a0e14;
-  --bg-card-hover: #24141c;
+  /* Heartless palette */
+  --bg-void: #0B0B0B;
+  --bg-elevated: #120A0A;
+  --bg-card: #1A0E0E;
+  --bg-card-hover: #241414;
   --black: #000000;
-  --white: #f4e8e4;
-  --primary: #c41e3a;
-  --primary-bright: #e8364f;
-  --primary-deep: #7a1528;
-  --gold: #c4a35a;
-  --gold-soft: #d4bc7d;
-  --muted: #a89294;
-  --muted-2: #6e5558;
-  --border: rgba(196, 30, 58, 0.22);
-  --border-soft: rgba(244, 232, 228, 0.08);
+  --parchment: #FDFBF7;
+  --crimson-blood: #8B0000;
+  --crimson-bright: #B22222;
+  --crimson-deep: #5C0000;
+  --royal-gold: #D4AF37;
+  --gold-soft: #E8C547;
+  --muted: #A8938A;
+  --muted-2: #6E5550;
+  --border-gold: rgba(212, 175, 55, 0.2);
+  --border-crimson: rgba(139, 0, 0, 0.3);
+  --border-soft: rgba(253, 251, 247, 0.06);
 
-  --gradient1: radial-gradient(50% 50% at 50% 50%, #e8364f 0%, #7a1528 100%);
-  --gradient2: linear-gradient(144deg, #c4a35a 14%, #c41e3a 82%);
-  --gradient3: linear-gradient(136deg, #e8364f 5%, #5c0f20 100%);
-  --gradient4: linear-gradient(213deg, #000 44%, #7a1528 124%);
-  --gradient5: linear-gradient(150deg, #000 30%, #c41e3a 52%, #7a1528 83%);
-  --gradient-hero: radial-gradient(ellipse 60% 50% at 70% 20%, rgba(196, 30, 58, 0.35) 0%, transparent 70%);
-  --gradient-section: linear-gradient(180deg, transparent 0%, rgba(122, 21, 40, 0.12) 50%, transparent 100%);
+  --gradient-hero: radial-gradient(ellipse 60% 50% at 70% 20%, rgba(139, 0, 0, 0.3) 0%, transparent 70%);
+  --gradient-section: linear-gradient(180deg, transparent 0%, rgba(92, 0, 0, 0.1) 50%, transparent 100%);
+  --gradient-card: linear-gradient(135deg, #110000, #000000);
 
-  --font-display: 'Cinzel', 'Times New Roman', serif;
-  --font-body: 'Rajdhani', system-ui, sans-serif;
-  --font-ui: 'Poppins', system-ui, sans-serif;
+  --font-display: 'Playfair Display', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-ui: 'Rajdhani', system-ui, sans-serif;
 
   --container: 1440px;
   --content-max: 720px;
-  --sidebar-offset: 42%;
-  --section-pad: clamp(4rem, 8vw, 7rem);
+  --section-pad: clamp(5rem, 10vw, 8rem);
   --radius: 12px;
   --radius-sm: 8px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Backward compat — maps old names to new palette */
+  --bg: var(--bg-void);
+  --white: var(--parchment);
+  --primary: var(--crimson-blood);
+  --primary-bright: var(--crimson-bright);
+  --primary-deep: var(--crimson-deep);
+  --gold: var(--royal-gold);
+  --border: var(--border-crimson);
 }
 
 /* Reset */
@@ -57,8 +64,8 @@ html {
 }
 
 body {
-  background: var(--bg);
-  color: var(--white);
+  background: var(--bg-void);
+  color: var(--parchment);
   font-family: var(--font-body);
   font-size: 1.8rem;
   font-weight: 400;
@@ -68,6 +75,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Velvet noise texture overlay */
 body::before {
   content: '';
   position: fixed;
@@ -76,8 +84,35 @@ body::before {
   z-index: 0;
   background:
     var(--gradient-hero),
-    radial-gradient(ellipse 40% 30% at 10% 80%, rgba(122, 21, 40, 0.2) 0%, transparent 60%),
-    radial-gradient(circle at 90% 90%, rgba(196, 163, 90, 0.06) 0%, transparent 40%);
+    radial-gradient(ellipse 40% 30% at 10% 80%, rgba(92, 0, 0, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 90% 90%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+}
+
+/* Velvet noise via SVG filter */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* Heartless watermark */
+.bg-watermark {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 16rem;
+  color: var(--crimson-blood);
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 0;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  user-select: none;
 }
 
 img {
@@ -115,39 +150,43 @@ button {
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 500;
-  color: var(--white);
+  font-weight: 600;
+  color: var(--royal-gold);
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .text-display-1 {
   font-size: clamp(5.6rem, 10vw, 12.8rem);
   line-height: 0.95;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+  font-weight: 700;
 }
 
 .text-display-2 {
   font-size: clamp(4rem, 7vw, 9.6rem);
   line-height: 0.95;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   font-family: var(--font-display);
+  font-weight: 700;
 }
 
 h1, .h1 {
   font-size: clamp(3.6rem, 5vw, 6.4rem);
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-weight: 700;
 }
 
 h2, .h2 {
   font-size: clamp(3.2rem, 4vw, 4.8rem);
-  line-height: 1.15;
+  font-weight: 600;
 }
 
 h3, .h3 {
   font-size: clamp(2.8rem, 3.5vw, 4rem);
   line-height: 1.2;
+  font-weight: 600;
 }
 
 h6, .h6 {
@@ -155,6 +194,7 @@ h6, .h6 {
   line-height: 1.3;
   font-family: var(--font-body);
   font-weight: 500;
+  color: var(--parchment);
 }
 
 .text-body-1 {
@@ -253,49 +293,317 @@ h6, .h6 {
   position: relative;
 }
 
-/* Heartless section divider — thorn vine with rose */
+/* Heartless section divider — ornate thorn vine with rose */
 .section::after {
-  content: '✦';
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.4rem;
-  color: var(--primary-deep);
-  opacity: 0.25;
+  width: 8rem;
+  height: 1.6rem;
+  background: 
+    radial-gradient(circle at 30% 50%, rgba(196, 30, 58, 0.15) 1px, transparent 2px),
+    radial-gradient(circle at 70% 50%, rgba(196, 163, 90, 0.1) 1px, transparent 2px);
+  border-top: 1px solid rgba(196, 163, 90, 0.06);
+  border-bottom: 1px solid rgba(196, 30, 58, 0.06);
 }
 
 .section:last-of-type::after {
   display: none;
 }
 
-/* Vine line across section dividers */
+/* Heart rose marker centered on divider */
 .section::before {
-  content: '';
+  content: '✧';
   position: absolute;
-  bottom: 0.7rem;
-  left: 42%;
-  right: 42%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(122, 21, 40, 0.2), transparent);
+  bottom: -0.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: var(--primary-deep);
+  opacity: 0.2;
+  z-index: 1;
 }
 
 .section:last-of-type::before {
   display: none;
 }
 
-/* Heart suit on section headings */
+/* Ornate subtitle flourish — keeps .subtitle base styles */
+.section .subtitle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
 .section .subtitle::after {
   content: '♡';
   display: inline-block;
-  margin-left: 0.8rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--primary);
-  opacity: 0.3;
+  opacity: 0.2;
+  margin-left: 0.2rem;
 }
 
+.section .subtitle::before {
+  content: '';
+  display: inline-block;
+  width: 3rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196, 30, 58, 0.2));
+  margin-right: 0.4rem;
+}
+
+/* Section label */
 .section-label {
   margin-bottom: 2rem;
+}
+
+/* ═══════ PLAYING CARD LAYOUT ═══════ */
+.works-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+  gap: 3rem;
+  padding: 2rem 0;
+}
+
+.royal-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  max-width: 34rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--gradient-card);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  transition: all 0.4s var(--ease);
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.royal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 30px rgba(139, 0, 0, 0.35), 0 12px 40px rgba(0, 0, 0, 0.5);
+  border-color: rgba(212, 175, 55, 0.35);
+}
+
+/* Card inner gradient background */
+.royal-card .card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: transform 0.6s var(--ease);
+}
+
+.royal-card:hover .card-bg {
+  transform: scale(1.05);
+}
+
+/* Gothic corners overlay */
+.royal-card .gothic-corner {
+  position: absolute;
+  z-index: 3;
+  color: rgba(212, 175, 55, 0.25);
+  transition: color 0.4s var(--ease);
+}
+
+.royal-card:hover .gothic-corner {
+  color: rgba(212, 175, 55, 0.5);
+}
+
+.royal-card .gc-tl { top: 6px; left: 6px; }
+.royal-card .gc-tr { top: 6px; right: 6px; transform: scaleX(-1); }
+.royal-card .gc-bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
+.royal-card .gc-br { bottom: 6px; right: 6px; transform: scale(-1, -1); }
+
+/* Card suit decorations */
+.royal-card .suit-corner {
+  position: absolute;
+  z-index: 2;
+  opacity: 0.12;
+  transition: opacity 0.4s var(--ease);
+}
+
+.royal-card:hover .suit-corner {
+  opacity: 0.25;
+}
+
+.royal-card .suit-tl { top: 14px; left: 14px; }
+.royal-card .suit-br { bottom: 14px; right: 14px; transform: rotate(180deg); }
+
+/* Card content */
+.royal-card .card-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.4rem;
+  background: linear-gradient(180deg, transparent 40%, rgba(11, 11, 11, 0.85) 100%);
+}
+
+.royal-card .card-category {
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--royal-gold);
+  opacity: 0.7;
+  margin-bottom: 0.6rem;
+}
+
+.royal-card .card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-weight: 600;
+  color: var(--parchment);
+  margin-bottom: 0.4rem;
+}
+
+.royal-card .card-blurb {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+.royal-card .card-date {
+  position: absolute;
+  top: 14px;
+  right: 50px;
+  z-index: 2;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  color: var(--muted-2);
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+/* ═══════ GOLD/CRIMSON BUTTONS ═══════ */
+.btn-royal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 2.8rem;
+  border: 1px solid var(--royal-gold);
+  background: transparent;
+  color: var(--royal-gold);
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  text-decoration: none;
+}
+
+.btn-royal:hover {
+  background: var(--crimson-blood);
+  color: var(--parchment);
+  border-color: var(--crimson-blood);
+  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3);
+}
+
+.btn-royal-outline {
+  background: transparent;
+  color: var(--royal-gold);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.btn-royal-outline:hover {
+  background: var(--crimson-blood);
+  border-color: var(--crimson-blood);
+  color: var(--parchment);
+}
+
+/* ═══════ SERVICE BULLETS ═══════ */
+.service-bullet-list {
+  list-style: none;
+  padding: 0;
+}
+
+.service-bullet-list li {
+  position: relative;
+  padding-left: 2.8rem;
+  margin-bottom: 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  color: var(--parchment);
+  line-height: 1.6;
+}
+
+.service-bullet-list li::before {
+  content: '♛';
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-size: 1.4rem;
+  color: var(--royal-gold);
+  opacity: 0.6;
+}
+
+.service-bullet-list li:nth-child(2)::before { content: '✧'; }
+.service-bullet-list li:nth-child(3)::before { content: '♤'; }
+
+/* ═══════ ROYAL DECREE PRICING ═══════ */
+.royal-decree {
+  position: relative;
+  padding: 4rem 3rem;
+  margin-top: 3rem;
+  background: linear-gradient(135deg, #110000, #000000);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.royal-decree::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.06);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.royal-decree .decree-crown {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--royal-gold);
+  opacity: 0.3;
+  width: 48px;
+  height: auto;
+  z-index: 2;
+}
+
+/* ═══════ FLOATING BACKGROUND DECORATIONS ═══════ */
+.bg-filigree {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.04;
+  color: var(--royal-gold);
+}
+
+.bg-filigree-left {
+  left: -3vw;
+  top: 20%;
+  width: 20vw;
+  height: auto;
+}
+
+.bg-filigree-right {
+  right: -3vw;
+  bottom: 30%;
+  width: 18vw;
+  height: auto;
+  transform: rotate(180deg);
 }
 
 /* Right navigation — Jayden style floating icon nav */

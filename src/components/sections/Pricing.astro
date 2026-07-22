@@ -1,13 +1,18 @@
 ---
 import PricingTabs from '../islands/PricingTabs';
 import { pricingPlans } from '../../data/content';
+import { Crown } from '../islands/HeartlessSVGs';
 const pp = pricingPlans();
 ---
 
 <section class="section section-pricing" id="pricing">
   <div class="tf-container">
     <div class="content-col">
-      <PricingTabs client:visible data={pp} />
+      <div class="text-body-2 dot-before subtitle">Engagement</div>
+      <div class="royal-decree">
+        <Crown className="decree-crown" size={48} />
+        <PricingTabs client:visible data={pp} />
+      </div>
     </div>
   </div>
 </section>

@@ -1,66 +1,57 @@
 ---
 import { works } from '../../data/content';
+import { GothicCorner, Suit } from '../islands/HeartlessSVGs';
 const w = works();
 
-const marqueeItems = Array.from({ length: 6 }, () => 'Selected Work');
+const suits = ['♠', '♥', '♦', '♣'] as const;
+type SuitType = 'heart' | 'spade' | 'diamond' | 'club';
+const suitMap: Record<string, SuitType> = { '♠': 'spade', '♥': 'heart', '♦': 'diamond', '♣': 'club' };
 ---
 
 <section class="section section-selected-works" id="works">
   <div class="tf-container">
     <div class="content-col">
-      <div class="banner-slider" aria-hidden="true">
-        <div class="marquee">
-          <div class="marquee-track">
-            {marqueeItems.map((text) => (
-              <>
-                <span class="banner-text text-display-2 fw-medium">{text}</span>
-                <span class="dot-circle"></span>
-              </>
-            ))}
-          </div>
-          <div class="marquee-track">
-            {marqueeItems.map((text) => (
-              <>
-                <span class="banner-text text-display-2 fw-medium">{text}</span>
-                <span class="dot-circle"></span>
-              </>
-            ))}
-          </div>
-        </div>
-      </div>
+      <div class="text-body-2 dot-before subtitle">Featured Works</div>
+      <h2 class="desc reveal" style="color: var(--parchment); margin-bottom: 3rem;">
+        The Royal Deck — each project is a playing card in the kingdom
+      </h2>
 
-      <div class="works-wrap">
-        {w.map((work: any) => (
-          <a
-            href={work.href}
-            class="works-item reveal"
-            target={work.href.startsWith('http') ? '_blank' : undefined}
-            rel={work.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-          >
-            <div class="image">
-              <div class="image-bg" style={`background: ${work.gradient};`}></div>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </div>
-            <div class="works-meta">
-              <div>
-                <div class="category text-body-2">{work.category}</div>
-                <h3 class="title">{work.title}</h3>
-                {work.blurb && <p class="work-blurb text-body-2">{work.blurb}</p>}
+      <div class="works-cards-grid">
+        {w.map((work: any, i: number) => {
+          const suit = suits[i % suits.length];
+          const tsuit = suitMap[suit];
+          return (
+            <a
+              href={work.href}
+              class="royal-card reveal"
+              target={work.href.startsWith('http') ? '_blank' : undefined}
+              rel={work.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
+              <div class="card-bg" style={`background: ${work.gradient};`}></div>
+
+              {/* Gothic corners */}
+              <GothicCorner className="gothic-corner gc-tl" size={32} />
+              <GothicCorner className="gothic-corner gc-tr" size={32} />
+              <GothicCorner className="gothic-corner gc-bl" size={32} />
+              <GothicCorner className="gothic-corner gc-br" size={32} />
+
+              {/* Suit corners */}
+              <Suit type={tsuit} className="suit-corner suit-tl" size={20} />
+              <Suit type={tsuit} className="suit-corner suit-br" size={20} />
+
+              <div class="card-date">{work.date}</div>
+
+              <div class="card-content">
+                <div class="card-category">{work.category}</div>
+                <h3 class="card-title">{work.title}</h3>
+                {work.blurb && <p class="card-blurb">{work.blurb}</p>}
               </div>
-              <div class="date">{work.date}</div>
-            </div>
-          </a>
-        ))}
+
+              <div class="card-arrow" aria-hidden="true" style="position:absolute;top:14px;right:16px;z-index:2;font-size:1.4rem;color:var(--royal-gold);opacity:0.3;">↗</div>
+            </a>
+          );
+        })}
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .work-blurb {
-    color: var(--muted);
-    margin-top: 0.8rem;
-    max-width: 42rem;
-    line-height: 1.5;
-  }
-</style>

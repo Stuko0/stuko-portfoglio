@@ -31,7 +31,7 @@ const nl = navLinks();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
@@ -40,6 +40,19 @@ const nl = navLinks();
     <div class="wrapper">
       <RightNav client:load locale={locale} navLinks={nl} />
       <div class="main-content relative">
+        <div class="bg-watermark" aria-hidden="true">♡</div>
+        <!-- Floating background decorations -->
+        <svg class="bg-filigree bg-filigree-left" viewBox="0 0 200 400" fill="currentColor" aria-hidden="true">
+          <path d="M50,0 Q30,60 60,100 Q90,140 50,200 Q10,260 70,320 Q100,360 50,400" stroke="currentColor" stroke-width="1" fill="none"/>
+          <circle cx="55" cy="100" r="12" opacity="0.5"/>
+          <path d="M60,100 Q80,120 50,140" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+          <path d="M55,50 L65,55" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+        </svg>
+        <svg class="bg-filigree bg-filigree-right" viewBox="0 0 200 400" fill="currentColor" aria-hidden="true">
+          <path d="M150,0 Q170,60 140,100 Q110,140 150,200 Q190,260 130,320 Q100,360 150,400" stroke="currentColor" stroke-width="1" fill="none"/>
+          <circle cx="145" cy="200" r="10" opacity="0.4"/>
+          <path d="M145,170 L135,175" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+        </svg>
         <slot />
       </div>
     </div>

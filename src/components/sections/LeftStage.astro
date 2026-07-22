@@ -1,52 +1,48 @@
 ---
-/** Left stage — Heartless (Marissa Meyer) aesthetic: 
-    white/red/black roses, thorn vines, crown silhouette, playing card hearts */
+/** Left Stage — Heartless royal crest: crown, heart locket, white rose, thorns */
 ---
 
 <aside class="left-stage" aria-hidden="true">
   <div class="left-stage-inner">
-    <!-- Crown silhouette -->
-    <div class="crown-silhouette" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span>
-    </div>
-    
-    <!-- Floating hearts (playing card style) -->
-    <div class="heart heart-1">♥</div>
-    <div class="heart heart-2">♥</div>
-    <div class="heart heart-3">♡</div>
-    
-    <!-- Orb glow -->
+    <!-- Crown -->
+    <svg class="crown" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+      <path d="M10,65 L5,25 L28,42 L60,8 L92,42 L115,25 L110,65 Z" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
+      <path d="M10,65 L110,65 L110,75 L10,75 Z" fill="currentColor" opacity="0.06"/>
+      <circle cx="60" cy="8" r="5" fill="currentColor" opacity="0.1"/>
+      <circle cx="28" cy="42" r="3.5" fill="currentColor" opacity="0.07"/>
+      <circle cx="92" cy="42" r="3.5" fill="currentColor" opacity="0.07"/>
+    </svg>
+
+    <!-- Orb glows -->
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    
+
+    <!-- Central heart locket -->
+    <div class="heart-locket">
+      <div class="heart-left"></div>
+      <div class="heart-right"></div>
+      <div class="heart-crack"></div>
+      <div class="heart-filigree">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <!-- Rose at center of heart -->
+      <svg class="heart-rose" viewBox="0 0 60 80" fill="currentColor" aria-hidden="true">
+        <path d="M30,70 L30,40" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+        <path d="M30,40 Q10,25 20,12 Q28,4 30,16 Q32,4 40,12 Q50,25 30,40 Z" opacity="0.5"/>
+        <path d="M30,36 Q18,28 25,20 Q28,14 30,24 Q32,14 35,20 Q42,28 30,36 Z" opacity="0.35"/>
+        <circle cx="30" cy="28" r="4" opacity="0.5"/>
+      </svg>
+    </div>
+
     <!-- Rings -->
     <div class="ring ring-outer"></div>
     <div class="ring ring-mid"></div>
     <div class="ring ring-inner"></div>
-    
-    <!-- Thorn vine cross -->
-    <div class="vine-cross">
-      <div class="vine vine-h"><span class="thorn thorn-l"></span><span class="thorn thorn-r"></span></div>
-      <div class="vine vine-v"><span class="thorn thorn-u"></span><span class="thorn thorn-d"></span></div>
-      <div class="rose-blossom rose-top">✧</div>
-      <div class="rose-blossom rose-bottom">✧</div>
-    </div>
 
     <!-- Stage label -->
     <div class="stage-label">
       <span class="dot-before">Stuko</span>
       <span class="year">♛ AI Systems</span>
-    </div>
-    
-    <!-- Corner rose clusters -->
-    <div class="corner-rose corner-tr">
-      <span class="rose-icon">✧</span>
-      <span class="thorn-line"></span>
-    </div>
-    <div class="corner-rose corner-bl">
-      <span class="rose-icon">✧</span>
-      <span class="thorn-line"></span>
     </div>
   </div>
 </aside>
@@ -79,247 +75,152 @@
     justify-content: center;
   }
 
-  /* ======== CROWN SILHOUETTE ======== */
-  .crown-silhouette {
+  /* Crown */
+  .crown {
     position: absolute;
-    top: 6%;
+    top: 5%;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    align-items: flex-end;
-    gap: 0;
-    opacity: 0.08;
+    width: 16rem;
+    height: auto;
+    color: var(--royal-gold);
   }
 
-  .crown-silhouette span {
-    width: 2.8rem;
-    height: 6rem;
-    background: var(--gold);
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  }
-
-  .crown-silhouette span:nth-child(1) { height: 4rem; }
-  .crown-silhouette span:nth-child(2) { height: 6rem; }
-  .crown-silhouette span:nth-child(3) { height: 8rem; width: 3.6rem; }
-  .crown-silhouette span:nth-child(4) { height: 6rem; }
-  .crown-silhouette span:nth-child(5) { height: 4rem; }
-
-  /* ======== FLOATING HEARTS ======== */
-  .heart {
-    position: absolute;
-    font-size: 3.2rem;
-    opacity: 0.12;
-    pointer-events: none;
-    animation: floatHeart 7s ease-in-out infinite;
-  }
-
-  .heart-1 {
-    top: 15%;
-    right: 12%;
-    color: var(--primary-bright);
-    font-size: 4rem;
-    animation-delay: 0s;
-  }
-
-  .heart-2 {
-    bottom: 20%;
-    left: 10%;
-    color: var(--white);
-    font-size: 2.8rem;
-    animation-delay: 2.3s;
-    opacity: 0.06;
-  }
-
-  .heart-3 {
-    top: 40%;
-    left: 55%;
-    color: var(--primary);
-    font-size: 2rem;
-    animation-delay: 4.7s;
-    opacity: 0.08;
-  }
-
-  @keyframes floatHeart {
-    0%, 100% { transform: translateY(0) rotate(-5deg) scale(1); }
-    50% { transform: translateY(-16px) rotate(5deg) scale(1.08); }
-  }
-
-  /* ======== ORBS ======== */
+  /* Orbs */
   .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(2px);
+    filter: blur(3px);
   }
 
   .orb-1 {
-    width: min(28vw, 36rem);
-    height: min(28vw, 36rem);
-    background: radial-gradient(circle at 35% 35%, #e8364f 0%, #7a1528 40%, transparent 70%);
-    opacity: 0.45;
+    width: min(26vw, 34rem);
+    height: min(26vw, 34rem);
+    background: radial-gradient(circle at 35% 35%, #8B0000 0%, #3A0000 35%, transparent 70%);
+    opacity: 0.3;
     animation: float 8s ease-in-out infinite;
   }
 
   .orb-2 {
-    width: min(16vw, 20rem);
-    height: min(16vw, 20rem);
-    background: radial-gradient(circle at 40% 40%, #c4a35a 0%, transparent 70%);
-    opacity: 0.2;
-    top: 28%;
-    left: 22%;
+    width: min(14vw, 18rem);
+    height: min(14vw, 18rem);
+    background: radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.12) 0%, transparent 65%);
+    opacity: 0.15;
+    top: 30%;
+    left: 20%;
     animation: float 11s ease-in-out infinite reverse;
   }
 
-  .orb-3 {
-    width: min(12vw, 14rem);
-    height: min(12vw, 14rem);
-    background: radial-gradient(circle, rgba(196, 30, 58, 0.4) 0%, transparent 70%);
-    bottom: 24%;
-    right: 18%;
-    animation: float 9s ease-in-out infinite 1s;
+  /* Heart locket */
+  .heart-locket {
+    position: absolute;
+    width: min(16vw, 20rem);
+    height: min(16vw, 20rem);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
   }
 
-  /* ======== RINGS (castle columns) ======== */
+  .heart-left, .heart-right {
+    position: absolute;
+    width: 46%;
+    height: 80%;
+  }
+
+  .heart-left {
+    left: 6%;
+    top: 10%;
+    border-radius: 100% 0 0 0;
+    border: 1.5px solid rgba(212, 175, 55, 0.12);
+    border-right: none;
+    border-bottom: none;
+    transform: rotate(-12deg);
+    transform-origin: bottom right;
+  }
+
+  .heart-right {
+    right: 6%;
+    top: 10%;
+    border-radius: 0 100% 0 0;
+    border: 1.5px solid rgba(212, 175, 55, 0.12);
+    border-left: none;
+    border-bottom: none;
+    transform: rotate(12deg);
+    transform-origin: bottom left;
+  }
+
+  .heart-crack {
+    position: absolute;
+    top: 22%;
+    left: 46%;
+    width: 2px;
+    height: 35%;
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.15), rgba(139, 0, 0, 0.1), transparent);
+    transform: rotate(-6deg);
+  }
+
+  .heart-crack::before {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: -3px;
+    width: 8px;
+    height: 1.5px;
+    background: rgba(139, 0, 0, 0.1);
+    transform: rotate(-25deg);
+  }
+
+  .heart-crack::after {
+    content: '';
+    position: absolute;
+    top: 32%;
+    left: 1px;
+    width: 7px;
+    height: 1px;
+    background: rgba(212, 175, 55, 0.08);
+    transform: rotate(20deg);
+  }
+
+  .heart-filigree {
+    position: absolute;
+    inset: 0;
+  }
+
+  .heart-filigree span {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.06);
+  }
+
+  .heart-filigree span:nth-child(1) { width: 40%; height: 40%; top: 20%; left: 30%; }
+  .heart-filigree span:nth-child(2) { width: 25%; height: 25%; top: 28%; left: 38%; border-color: rgba(139, 0, 0, 0.05); }
+  .heart-filigree span:nth-child(3) { width: 55%; height: 1px; top: 52%; left: 22%; border: none; border-top: 1px solid rgba(212, 175, 55, 0.05); }
+  .heart-filigree span:nth-child(4) { width: 100%; height: 55%; top: 32%; left: 0; border: 1px solid rgba(139, 0, 0, 0.03); border-radius: 50% 50% 0 0; border-bottom: none; }
+
+  /* Rose inside heart */
+  .heart-rose {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35%;
+    height: auto;
+    color: var(--parchment);
+    opacity: 0.4;
+  }
+
+  /* Rings */
   .ring {
     position: absolute;
     border-radius: 50%;
-    border: 1px solid rgba(196, 30, 58, 0.2);
+    border: 1px solid rgba(139, 0, 0, 0.15);
   }
 
-  .ring-outer {
-    width: min(32vw, 42rem);
-    height: min(32vw, 42rem);
-    border-color: rgba(196, 163, 90, 0.15);
-    animation: spin 40s linear infinite;
-  }
+  .ring-outer { width: min(32vw, 42rem); height: min(32vw, 42rem); border-color: rgba(212, 175, 55, 0.1); animation: spin 40s linear infinite; }
+  .ring-mid { width: min(24vw, 30rem); height: min(24vw, 30rem); border-style: dashed; border-color: rgba(92, 0, 0, 0.2); animation: spin 28s linear infinite reverse; }
+  .ring-inner { width: min(14vw, 18rem); height: min(14vw, 18rem); border-color: rgba(139, 0, 0, 0.2); animation: spin 18s linear infinite; }
 
-  .ring-mid {
-    width: min(24vw, 30rem);
-    height: min(24vw, 30rem);
-    border-style: dashed;
-    border-color: rgba(122, 21, 40, 0.25);
-    animation: spin 28s linear infinite reverse;
-  }
-
-  .ring-inner {
-    width: min(14vw, 18rem);
-    height: min(14vw, 18rem);
-    border-color: rgba(232, 54, 79, 0.3);
-    animation: spin 18s linear infinite;
-  }
-
-  /* ======== VINE CROSS (thorns + roses) ======== */
-  .vine-cross {
-    position: absolute;
-    width: min(22vw, 28rem);
-    height: min(22vw, 28rem);
-  }
-
-  .vine {
-    position: absolute;
-    background: linear-gradient(90deg, transparent, rgba(196, 163, 90, 0.25), transparent);
-  }
-
-  .vine-h {
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    transform: translateY(-50%);
-  }
-
-  .vine-v {
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, transparent, rgba(196, 163, 90, 0.25), transparent);
-  }
-
-  /* Thorns */
-  .thorn {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border: 1.5px solid rgba(122, 21, 40, 0.5);
-    border-left: none;
-    border-bottom: none;
-  }
-
-  .thorn-l { left: 20%; top: 50%; transform: translateY(-50%) rotate(-45deg); }
-  .thorn-r { right: 25%; top: 50%; transform: translateY(-50%) rotate(135deg); }
-  .thorn-u { top: 30%; left: 50%; transform: translateX(-50%) rotate(45deg); }
-  .thorn-d { bottom: 25%; left: 50%; transform: translateX(-50%) rotate(-135deg); }
-
-  /* Rose blossom markers */
-  .rose-blossom {
-    position: absolute;
-    font-size: 2.4rem;
-    opacity: 0.3;
-    color: var(--primary-bright);
-  }
-
-  .rose-top { top: -0.8rem; left: 50%; transform: translateX(-50%); }
-  .rose-bottom { bottom: -0.8rem; left: 50%; transform: translateX(-50%); }
-
-  /* ======== CORNER ROSE CLUSTERS ======== */
-  .corner-rose {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    opacity: 0.15;
-  }
-
-  .corner-tr {
-    top: 3rem;
-    right: 3rem;
-  }
-
-  .corner-bl {
-    bottom: 3rem;
-    left: 3rem;
-  }
-
-  .rose-icon {
-    font-size: 2.4rem;
-    color: var(--primary-bright);
-  }
-
-  .thorn-line {
-    width: 1px;
-    height: 4rem;
-    background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
-    position: relative;
-  }
-
-  .corner-tr .thorn-line { background: linear-gradient(180deg, transparent 0%, var(--gold) 100%); }
-
-  .corner-bl .thorn-line::after,
-  .corner-tr .thorn-line::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border: 1.5px solid var(--primary-deep);
-    border-left: none;
-    border-bottom: none;
-  }
-
-  .corner-bl .thorn-line::after {
-    top: 0;
-    left: -3px;
-    transform: rotate(45deg);
-  }
-
-  .corner-tr .thorn-line::after {
-    bottom: 0;
-    left: -3px;
-    transform: rotate(-135deg);
-  }
-
-  /* ======== STAGE LABEL ======== */
+  /* Label */
   .stage-label {
     position: absolute;
     bottom: 4.8rem;
@@ -332,19 +233,19 @@
     font-size: 1.3rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
+    z-index: 3;
   }
 
   .stage-label .year {
     padding-left: 1.7rem;
-    color: var(--gold);
-    opacity: 0.7;
+    color: var(--royal-gold);
+    opacity: 0.6;
     font-size: 1.1rem;
   }
 
-  /* ======== ANIMATIONS ======== */
   @keyframes float {
     0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-18px) scale(1.03); }
+    50% { transform: translateY(-16px) scale(1.02); }
   }
 
   @keyframes spin {
