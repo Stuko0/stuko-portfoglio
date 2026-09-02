@@ -8,13 +8,27 @@ const st = stats();
 ---
 
 <section class="section-hero" id="home">
-  <div class="tf-container">
+  <!-- Floating crimson rose petals — Heartless aesthetic -->
+  <div class="hero-petals" aria-hidden="true">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+  </div>
+  <div class="tf-container" style="position: relative; z-index: 1;">
     <div class="content-col" style="position: relative;">
       <div class="icon-gradient" aria-hidden="true"></div>
       <LocalTime client:load location={s.location} />
       <div class="main-title">
+        <span class="hero-ornament" aria-hidden="true">♛ · ♡ · ♛</span>
         <div class="text-body-1 dot-before subtitle">AI Systems Engineer</div>
-        <h1 class="title" style="color: var(--parchment); background: none; -webkit-text-fill-color: initial;">
+        <h1 class="title text-display-1">
           Building Systems That Think<br />
           Fast at Scale
         </h1>

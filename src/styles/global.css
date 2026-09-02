@@ -26,6 +26,9 @@
   --gradient-hero: radial-gradient(ellipse 60% 50% at 70% 20%, rgba(139, 0, 0, 0.3) 0%, transparent 70%);
   --gradient-section: linear-gradient(180deg, transparent 0%, rgba(92, 0, 0, 0.1) 50%, transparent 100%);
   --gradient-card: linear-gradient(135deg, #110000, #000000);
+  /* --gradient2 powers pricing numbers & counter values */
+  --gradient1: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
+  --gradient2: linear-gradient(135deg, var(--parchment) 0%, #f4c4c8 40%, var(--crimson-bright) 100%);
 
   --font-display: 'Playfair Display', 'Times New Roman', serif;
   --font-body: 'Inter', system-ui, sans-serif;
@@ -293,44 +296,45 @@ h6, .h6 {
   position: relative;
 }
 
-/* Heartless section divider — ornate thorn vine with rose */
+/* Heartless section divider — ornate gold thorn vine */
 .section::after {
-  content: '';
+  content: '❧ ✦ ❧';
   position: absolute;
-  bottom: 0;
+  bottom: -1rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 8rem;
-  height: 1.6rem;
-  background: 
-    radial-gradient(circle at 30% 50%, rgba(196, 30, 58, 0.15) 1px, transparent 2px),
-    radial-gradient(circle at 70% 50%, rgba(196, 163, 90, 0.1) 1px, transparent 2px);
-  border-top: 1px solid rgba(196, 163, 90, 0.06);
-  border-bottom: 1px solid rgba(196, 30, 58, 0.06);
+  font-size: 1.1rem;
+  color: var(--royal-gold);
+  opacity: 0.12;
+  white-space: nowrap;
+  letter-spacing: 0.8rem;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .section:last-of-type::after {
   display: none;
 }
 
-/* Heart rose marker centered on divider */
+/* Thin crimson rule above the ornament */
 .section::before {
-  content: '✧';
+  content: '';
   position: absolute;
-  bottom: -0.3rem;
+  bottom: -0.1rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.2rem;
-  color: var(--primary-deep);
-  opacity: 0.2;
-  z-index: 1;
+  width: 16rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.18), rgba(212, 175, 55, 0.12), rgba(139, 0, 0, 0.18), transparent);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .section:last-of-type::before {
   display: none;
 }
 
-/* Ornate subtitle flourish — keeps .subtitle base styles */
+/* Ornate subtitle flourish */
 .section .subtitle {
   position: relative;
   display: inline-flex;
@@ -342,18 +346,18 @@ h6, .h6 {
   content: '♡';
   display: inline-block;
   font-size: 0.9rem;
-  color: var(--primary);
-  opacity: 0.2;
+  color: var(--royal-gold);
+  opacity: 0.25;
   margin-left: 0.2rem;
 }
 
 .section .subtitle::before {
-  content: '';
+  content: '❧';
   display: inline-block;
-  width: 3rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(196, 30, 58, 0.2));
-  margin-right: 0.4rem;
+  font-size: 1rem;
+  color: var(--crimson-blood);
+  opacity: 0.35;
+  margin-right: 0.2rem;
 }
 
 /* Section label */
@@ -721,6 +725,57 @@ h6, .h6 {
   align-items: center;
   padding: 12rem 0 8rem;
   position: relative;
+  overflow: hidden;
+}
+
+/* Floating rose petals — pure CSS, no JS */
+.hero-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  width: 8px;
+  height: 10px;
+  background: var(--crimson-blood);
+  border-radius: 50% 50% 50% 0;
+  opacity: 0;
+  animation: petalFall linear infinite;
+  will-change: transform, opacity;
+}
+
+.petal:nth-child(1)  { left: 8%;   width: 6px;  height: 8px;  animation-duration: 12s; animation-delay: 0s;    opacity: 0.18; }
+.petal:nth-child(2)  { left: 18%;  width: 9px;  height: 12px; animation-duration: 15s; animation-delay: 2s;    opacity: 0.12; }
+.petal:nth-child(3)  { left: 32%;  width: 7px;  height: 9px;  animation-duration: 11s; animation-delay: 4s;    opacity: 0.20; }
+.petal:nth-child(4)  { left: 50%;  width: 10px; height: 13px; animation-duration: 18s; animation-delay: 1s;    opacity: 0.10; }
+.petal:nth-child(5)  { left: 65%;  width: 6px;  height: 8px;  animation-duration: 14s; animation-delay: 3s;    opacity: 0.15; }
+.petal:nth-child(6)  { left: 78%;  width: 8px;  height: 10px; animation-duration: 16s; animation-delay: 5s;    opacity: 0.13; }
+.petal:nth-child(7)  { left: 90%;  width: 5px;  height: 7px;  animation-duration: 10s; animation-delay: 0.5s;  opacity: 0.22; }
+.petal:nth-child(8)  { left: 42%;  width: 7px;  height: 9px;  animation-duration: 13s; animation-delay: 7s;    opacity: 0.16; }
+.petal:nth-child(9)  { left: 55%;  width: 9px;  height: 11px; animation-duration: 17s; animation-delay: 2.5s;  opacity: 0.09; }
+.petal:nth-child(10) { left: 23%;  width: 6px;  height: 8px;  animation-duration: 19s; animation-delay: 6s;    opacity: 0.18; }
+
+@keyframes petalFall {
+  0%   { transform: translateY(-60px) rotate(0deg)   translateX(0px);   opacity: 0; }
+  5%   { opacity: var(--petal-opacity, 0.15); }
+  80%  { opacity: var(--petal-opacity, 0.12); }
+  100% { transform: translateY(110vh)  rotate(360deg) translateX(40px);  opacity: 0; }
+}
+
+/* Hero ornament above subtitle */
+.hero-ornament {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--royal-gold);
+  opacity: 0.35;
+  letter-spacing: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-style: italic;
 }
 
 .section-hero .infor {
@@ -732,7 +787,7 @@ h6, .h6 {
 
 .section-hero .main-title .title {
   margin-bottom: 2.4rem;
-  background: linear-gradient(135deg, var(--white) 0%, #f4c4c8 40%, var(--primary-bright) 100%);
+  background: linear-gradient(135deg, var(--parchment) 0%, #f4c4c8 45%, var(--crimson-bright) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1959,6 +2014,77 @@ h6, .h6 {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ─── WCAG 2.1 AA Focus-visible styles ─── */
+/* Remove the global outline:none and replace with visible rings */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--royal-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Right nav focus ring override */
+.right-nav a:focus-visible {
+  outline: 2px solid var(--crimson-bright);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+/* ─── Contact Decree text ─── */
+.contact-decree {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.5rem, 2vw, 1.8rem);
+  color: var(--royal-gold);
+  opacity: 0.55;
+  margin-bottom: 3.2rem;
+  line-height: 1.5;
+  max-width: 46rem;
+  letter-spacing: 0.01em;
+}
+
+/* ─── Footer social links ─── */
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 4rem;
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.3s var(--ease);
+}
+
+.footer-socials a::before {
+  content: '↗';
+  font-size: 1rem;
+  opacity: 0.5;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.footer-socials a:hover {
+  color: var(--royal-gold);
+}
+
+.footer-socials a:hover::before {
+  opacity: 1;
+  transform: translate(2px, -2px);
 }
 
 /* Responsive */

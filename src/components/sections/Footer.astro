@@ -1,6 +1,7 @@
 ---
-import { site } from '../../data/content';
+import { site, socials } from '../../data/content';
 const s = site();
+const sl = socials();
 
 const items = Array.from({ length: 6 }, () => 'Book A Call');
 ---
@@ -9,7 +10,7 @@ const items = Array.from({ length: 6 }, () => 'Book A Call');
   <div class="footer-glow" aria-hidden="true"></div>
   <div class="tf-container">
     <div class="content-col">
-      <a href="#contact" class="cta" aria-label="Book a call" style="text-decoration: none;">
+      <a href="#contact" class="cta" aria-label="Book a call — navigate to contact section" style="text-decoration: none;">
         <div class="footer-marquee">
           <div class="track">
             {items.map((text) => (
@@ -29,6 +30,20 @@ const items = Array.from({ length: 6 }, () => 'Book A Call');
           </div>
         </div>
       </a>
+
+      <!-- Social links -->
+      <nav class="footer-socials" aria-label="Social and professional links">
+        {sl.map((social: any) => (
+          <a
+            href={social.href}
+            target={social.href.startsWith('http') ? '_blank' : undefined}
+            rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            {social.label}
+          </a>
+        ))}
+      </nav>
+
       <div class="footer-bottom">
         <span>© {new Date().getFullYear()} {s.name} · {s.shortName}</span>
         <a href={`mailto:${s.email}`}>{s.email}</a>

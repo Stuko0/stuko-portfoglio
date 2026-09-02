@@ -62,7 +62,7 @@
         "title": "Lydia Agent",
         "category": "AI Agent · Open Source CLI",
         "date": "2025 – Present",
-        "href": "https://lydia-agent.stuko.dev",
+        "href": "https://alice-agent.stuko.dev",
         "gradient": "linear-gradient(135deg, #232136 0%, #c4a7e7 35%, #c41e3a 70%, #0a0508 100%)",
         "blurb": "Local-first AI teammate: persistent memory, skills, sandboxed subagents. Runs on your machine."
       },
@@ -233,7 +233,7 @@
       },
       {
         "q": "What is Lydia Agent?",
-        "a": "An open-source, local-first AI teammate CLI. Persistent memory, extensible skills, sandboxed subagents. Try it at lydia-agent.stuko.dev."
+        "a": "An open-source, local-first AI teammate CLI. Persistent memory, extensible skills, sandboxed subagents. Try it at alice-agent.stuko.dev."
       }
     ]
   },
@@ -249,7 +249,7 @@
   },
   "socials": [
     { "label": "GitHub", "href": "https://github.com/Stuko0" },
-    { "label": "Lydia", "href": "https://lydia-agent.stuko.dev" },
+    { "label": "Alice Agent", "href": "https://alice-agent.stuko.dev" },
     { "label": "Email", "href": "mailto:avplaying@gmail.com" },
     { "label": "Web", "href": "https://stuko.dev" }
   ],
