@@ -20,7 +20,7 @@ export default function PricingTabs({ data }: Props) {
   return (
     <>
       <div class="heading">
-        <div class="text-display-2 fw-medium title">Engagement</div>
+        <h2 class="text-display-2 fw-medium title">Engagement</h2>
         <div class="menu-tab style-1" role="tablist">
           {data.map((p, i) => (
             <button
@@ -40,7 +40,7 @@ export default function PricingTabs({ data }: Props) {
       <div class="widget-content-tab">
         <div class="pricing-item" key={plan.id}>
           <div class="top">
-            <h6 class="dot-before fw-medium title">{plan.name}</h6>
+            <h3 class="dot-before fw-medium title h6">{plan.name}</h3>
             <div class="text-body-1 fw-medium text">{plan.blurb}</div>
             <div class="price">
               <div class="text-display-2 fw-medium number">{plan.price}</div>

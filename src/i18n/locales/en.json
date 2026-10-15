@@ -1,12 +1,12 @@
 {
   "site": {
-    "name": "Alexander Porcel",
+    "name": "Alexander Villanueva Porcel",
     "shortName": "Stuko",
     "handle": "@stuko",
-    "title": "Alexander Porcel — AI Systems Engineer",
+    "title": "Alexander Villanueva Porcel — AI Systems Engineer",
     "description": "AI Systems Engineer building distributed backends, GPU inference systems, and high-throughput data pipelines. Golang, Python, CUDA, Kubernetes.",
     "location": "Cochabamba, BO",
-    "email": "avplaying@gmail.com",
+    "email": "contact@stuko.dev",
     "phone": "+591 6760 2979",
     "tagline": "Building Systems That Think\nFast at Scale",
     "intro": "AI Systems Engineer with ~4 years building distributed backends,\nGPU inference and high-performance data pipelines.",
@@ -63,7 +63,7 @@
         "category": "AI Agent · Open Source CLI",
         "date": "2025 – Present",
         "href": "https://alice-agent.stuko.dev",
-        "gradient": "linear-gradient(135deg, #232136 0%, #c4a7e7 35%, #c41e3a 70%, #0a0508 100%)",
+        "gradient": "linear-gradient(150deg, #FBF7EC 0%, #F2E8D3 55%, #E9DCC0 100%)",
         "blurb": "Local-first AI teammate: persistent memory, skills, sandboxed subagents. Runs on your machine."
       },
       {
@@ -71,7 +71,7 @@
         "category": "Distributed Systems · Geospatial",
         "date": "2024 – Present",
         "href": "#contact",
-        "gradient": "linear-gradient(160deg, #1a0f20 0%, #7a1528 40%, #c41e3a 70%, #0d0508 100%)",
+        "gradient": "linear-gradient(165deg, #FBF7EC 0%, #F6EEDD 50%, #EBDFC6 100%)",
         "blurb": "Event-driven wildfire monitoring for Bolivia — satellite telemetry, Golang, gRPC, K8s, PostGIS."
       },
       {
@@ -79,7 +79,7 @@
         "category": "AI Systems · Financial Data",
         "date": "2025 – Present",
         "href": "#contact",
-        "gradient": "linear-gradient(145deg, #0a1628 0%, #1e4d6b 40%, #c4a35a 75%, #0a0508 100%)",
+        "gradient": "linear-gradient(140deg, #FAF4E6 0%, #F1E6CE 60%, #E7D9BB 100%)",
         "blurb": "GPU inference across RTX A6000 nodes + StarRocks/ES OLAP for sub-second financial queries."
       }
     ]
@@ -247,10 +247,20 @@
   "footer": {
     "cta": "Book A Call"
   },
+  "news": {
+    "title": "News from the Workshop",
+    "copy": "One email only when something real ships: Alice, !Scarlet, open-source releases. No noise, no weekly digest.",
+    "label": "Your email",
+    "placeholder": "you@example.com",
+    "button": "Subscribe",
+    "loading": "Subscribing...",
+    "success": "Check your inbox, the welcome email is on its way.",
+    "error": "Could not subscribe. Write to contact@stuko.dev and I will add you."
+  },
   "socials": [
     { "label": "GitHub", "href": "https://github.com/Stuko0" },
     { "label": "Alice Agent", "href": "https://alice-agent.stuko.dev" },
-    { "label": "Email", "href": "mailto:avplaying@gmail.com" },
+    { "label": "Email", "href": "mailto:contact@stuko.dev" },
     { "label": "Web", "href": "https://stuko.dev" }
   ],
   "education": {

@@ -1,43 +1,103 @@
 ---
-/** Left Stage — Heartless royal crest: crown, heart locket, white rose, thorns */
+/** Left Stage — Wonderland paper-cutout diorama:
+    engraved plate with rose vine, fanned court cards, vorpal sword. */
 ---
 
 <aside class="left-stage" aria-hidden="true">
   <div class="left-stage-inner">
-    <!-- Crown -->
-    <svg class="crown" viewBox="0 0 120 80" fill="none" aria-hidden="true">
-      <path d="M10,65 L5,25 L28,42 L60,8 L92,42 L115,25 L110,65 Z" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
-      <path d="M10,65 L110,65 L110,75 L10,75 Z" fill="currentColor" opacity="0.06"/>
-      <circle cx="60" cy="8" r="5" fill="currentColor" opacity="0.1"/>
-      <circle cx="28" cy="42" r="3.5" fill="currentColor" opacity="0.07"/>
-      <circle cx="92" cy="42" r="3.5" fill="currentColor" opacity="0.07"/>
-    </svg>
-
-    <!-- Orb glows -->
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-
-    <!-- Central heart locket -->
-    <div class="heart-locket">
-      <div class="heart-left"></div>
-      <div class="heart-right"></div>
-      <div class="heart-crack"></div>
-      <div class="heart-filigree">
-        <span></span><span></span><span></span><span></span>
-      </div>
-      <!-- Rose at center of heart -->
-      <svg class="heart-rose" viewBox="0 0 60 80" fill="currentColor" aria-hidden="true">
-        <path d="M30,70 L30,40" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-        <path d="M30,40 Q10,25 20,12 Q28,4 30,16 Q32,4 40,12 Q50,25 30,40 Z" opacity="0.5"/>
-        <path d="M30,36 Q18,28 25,20 Q28,14 30,24 Q32,14 35,20 Q42,28 30,36 Z" opacity="0.35"/>
-        <circle cx="30" cy="28" r="4" opacity="0.5"/>
+    <!-- Back layer: engraved plate + rose vine -->
+    <div class="stage-layer layer-back">
+      <svg class="stage-art" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+        <circle cx="200" cy="200" r="150" fill="#E8DDC6" stroke="#201A14" stroke-opacity="0.5" stroke-width="1.5" />
+        <circle cx="200" cy="200" r="164" stroke="#8F6E23" stroke-width="1" stroke-dasharray="2 6" />
+        <!-- engraving hatch across the lower plate -->
+        <g stroke="#201A14" stroke-opacity="0.16" stroke-width="1">
+          <path d="M72 258h256" />
+          <path d="M82 270h236" />
+          <path d="M97 282h206" />
+          <path d="M118 294h164" />
+          <path d="M144 306h112" />
+        </g>
+        <!-- rose vine along the upper rim -->
+        <path d="M56 214C56 126 122 54 206 50" stroke="#201A14" stroke-opacity="0.6" stroke-width="1.5" />
+        <path d="M96 128c14-12 26-4 28 8-15 6-25 2-28-8z" fill="#201A14" fill-opacity="0.35" />
+        <path d="M142 84c12-12 24-6 27 6-14 7-24 3-27-6z" fill="#201A14" fill-opacity="0.3" />
+        <path d="M70 172c-13-9-24-2-26 10 14 5 23 1 26-10z" fill="#201A14" fill-opacity="0.3" />
+        <g transform="translate(118 96)">
+          <circle r="11" fill="#B3231F" fill-opacity="0.8" stroke="#201A14" stroke-width="1" />
+          <circle r="6.5" fill="#8E1B1E" />
+          <circle r="2.4" fill="#F4EDDC" fill-opacity="0.85" />
+        </g>
+        <g transform="translate(170 64)">
+          <circle r="9" fill="#B3231F" fill-opacity="0.7" stroke="#201A14" stroke-width="1" />
+          <circle r="5" fill="#8E1B1E" />
+        </g>
+        <g transform="translate(78 158)">
+          <circle r="8" fill="#FBF7EC" stroke="#201A14" stroke-width="1.2" />
+          <circle r="4" fill="#E8DDC6" />
+        </g>
+        <!-- engraved monogram -->
+        <text x="200" y="226" text-anchor="middle" font-family="'Bodoni Moda', serif" font-size="84" font-weight="700" fill="#201A14" fill-opacity="0.14">A</text>
       </svg>
     </div>
 
-    <!-- Rings -->
-    <div class="ring ring-outer"></div>
-    <div class="ring ring-mid"></div>
-    <div class="ring ring-inner"></div>
+    <!-- Middle layer: two fanned court cards -->
+    <div class="stage-layer layer-mid">
+      <svg class="stage-art" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+        <!-- Ace of spades -->
+        <g transform="rotate(-13 190 215)">
+          <rect x="96" y="104" width="152" height="224" rx="10" fill="#FBF7EC" stroke="#201A14" stroke-width="2" />
+          <rect x="103" y="111" width="138" height="210" rx="6" stroke="#201A14" stroke-opacity="0.4" />
+          <text x="112" y="146" font-family="'Bodoni Moda', serif" font-size="36" font-weight="700" fill="#201A14">A</text>
+          <g transform="translate(112 156) scale(0.8)" fill="#201A14">
+            <path d="M12,24 C6,18 0,12 0,7 C0,3 3,1 6,1 C9,1 11,3 12,6 C13,3 15,1 18,1 C21,1 24,3 24,7 C24,12 18,18 12,24 Z M12,10 L8,16 L16,16 Z" fill-rule="evenodd" />
+          </g>
+          <g transform="translate(150 190) scale(3.4)" fill="#201A14" fill-opacity="0.1">
+            <path d="M12,24 C6,18 0,12 0,7 C0,3 3,1 6,1 C9,1 11,3 12,6 C13,3 15,1 18,1 C21,1 24,3 24,7 C24,12 18,18 12,24 Z M12,10 L8,16 L16,16 Z" fill-rule="evenodd" />
+          </g>
+          <text x="232" y="316" text-anchor="end" font-family="'Bodoni Moda', serif" font-size="36" font-weight="700" fill="#201A14" transform="rotate(180 224 306)">A</text>
+        </g>
+        <!-- King of hearts -->
+        <g transform="rotate(11 245 225)">
+          <rect x="176" y="120" width="152" height="224" rx="10" fill="#FBF7EC" stroke="#201A14" stroke-width="2" />
+          <rect x="183" y="127" width="138" height="210" rx="6" stroke="#201A14" stroke-opacity="0.4" />
+          <text x="192" y="162" font-family="'Bodoni Moda', serif" font-size="36" font-weight="700" fill="#B3231F">K</text>
+          <g transform="translate(192 172) scale(0.8)" fill="#B3231F">
+            <path d="M12,22 C6,16 0,11 0,6 C0,2 3,0 6,0 C8,0 11,2 12,5 C13,2 16,0 18,0 C21,0 24,2 24,6 C24,11 18,16 12,22 Z" />
+          </g>
+          <g transform="translate(230 206) scale(3.4)" fill="#B3231F" fill-opacity="0.12">
+            <path d="M12,22 C6,16 0,11 0,6 C0,2 3,0 6,0 C8,0 11,2 12,5 C13,2 16,0 18,0 C21,0 24,2 24,6 C24,11 18,16 12,22 Z" />
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Front layer: the vorpal sword -->
+    <div class="stage-layer layer-front">
+      <svg class="stage-art sword" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+        <g transform="rotate(-42 200 205)">
+          <!-- blade -->
+          <path d="M200 42 L212 78 L212 236 L188 236 L188 78 Z" fill="#C9D2DA" stroke="#201A14" stroke-width="2" stroke-linejoin="round" />
+          <path d="M200 62 L200 232" stroke="#201A14" stroke-opacity="0.45" />
+          <path class="gleam" d="M196 70 L204 70 L202 228 L198 228 Z" fill="#FBF7EC" fill-opacity="0.75" />
+          <!-- crossguard -->
+          <path d="M146 236 h108 a7 7 0 0 1 0 14 h-108 a7 7 0 0 1 0 -14 z" fill="#8F6E23" stroke="#201A14" stroke-width="2" />
+          <circle cx="154" cy="243" r="5" fill="#8E1B1E" stroke="#201A14" stroke-width="1.5" />
+          <circle cx="246" cy="243" r="5" fill="#8E1B1E" stroke="#201A14" stroke-width="1.5" />
+          <!-- grip -->
+          <rect x="191" y="250" width="18" height="56" rx="5" fill="#6E1416" stroke="#201A14" stroke-width="2" />
+          <g stroke="#F4EDDC" stroke-opacity="0.5">
+            <path d="M192 262 l16 -6" />
+            <path d="M192 274 l16 -6" />
+            <path d="M192 286 l16 -6" />
+            <path d="M192 298 l16 -6" />
+          </g>
+          <!-- pommel -->
+          <circle cx="200" cy="316" r="12" fill="#8F6E23" stroke="#201A14" stroke-width="2" />
+          <path d="M200 310 l1.8 3.6 4 0.6 -2.9 2.8 0.7 4 -3.6 -1.9 -3.6 1.9 0.7 -4 -2.9 -2.8 4 -0.6 z" fill="#F4EDDC" fill-opacity="0.9" />
+        </g>
+      </svg>
+    </div>
 
     <!-- Stage label -->
     <div class="stage-label">
@@ -75,150 +135,61 @@
     justify-content: center;
   }
 
-  /* Crown */
-  .crown {
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 16rem;
-    height: auto;
-    color: var(--royal-gold);
-  }
-
-  /* Orbs */
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(3px);
-  }
-
-  .orb-1 {
-    width: min(26vw, 34rem);
-    height: min(26vw, 34rem);
-    background: radial-gradient(circle at 35% 35%, #8B0000 0%, #3A0000 35%, transparent 70%);
-    opacity: 0.3;
-    animation: float 8s ease-in-out infinite;
-  }
-
-  .orb-2 {
-    width: min(14vw, 18rem);
-    height: min(14vw, 18rem);
-    background: radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.12) 0%, transparent 65%);
-    opacity: 0.15;
-    top: 30%;
-    left: 20%;
-    animation: float 11s ease-in-out infinite reverse;
-  }
-
-  /* Heart locket */
-  .heart-locket {
-    position: absolute;
-    width: min(16vw, 20rem);
-    height: min(16vw, 20rem);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -55%);
-  }
-
-  .heart-left, .heart-right {
-    position: absolute;
-    width: 46%;
-    height: 80%;
-  }
-
-  .heart-left {
-    left: 6%;
-    top: 10%;
-    border-radius: 100% 0 0 0;
-    border: 1.5px solid rgba(212, 175, 55, 0.12);
-    border-right: none;
-    border-bottom: none;
-    transform: rotate(-12deg);
-    transform-origin: bottom right;
-  }
-
-  .heart-right {
-    right: 6%;
-    top: 10%;
-    border-radius: 0 100% 0 0;
-    border: 1.5px solid rgba(212, 175, 55, 0.12);
-    border-left: none;
-    border-bottom: none;
-    transform: rotate(12deg);
-    transform-origin: bottom left;
-  }
-
-  .heart-crack {
-    position: absolute;
-    top: 22%;
-    left: 46%;
-    width: 2px;
-    height: 35%;
-    background: linear-gradient(180deg, rgba(212, 175, 55, 0.15), rgba(139, 0, 0, 0.1), transparent);
-    transform: rotate(-6deg);
-  }
-
-  .heart-crack::before {
-    content: '';
-    position: absolute;
-    top: 12%;
-    left: -3px;
-    width: 8px;
-    height: 1.5px;
-    background: rgba(139, 0, 0, 0.1);
-    transform: rotate(-25deg);
-  }
-
-  .heart-crack::after {
-    content: '';
-    position: absolute;
-    top: 32%;
-    left: 1px;
-    width: 7px;
-    height: 1px;
-    background: rgba(212, 175, 55, 0.08);
-    transform: rotate(20deg);
-  }
-
-  .heart-filigree {
+  /* Cut-paper layers: pointer parallax shifts each depth differently */
+  .stage-layer {
     position: absolute;
     inset: 0;
+    display: grid;
+    place-items: center;
+    transform: translate3d(
+      calc(var(--px, 0) * var(--depth, 0px)),
+      calc(var(--py, 0) * var(--depth, 0px)),
+      0
+    );
+    transition: transform 0.7s var(--ease);
+    will-change: transform;
   }
 
-  .heart-filigree span {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(212, 175, 55, 0.06);
+  .layer-back {
+    --depth: 8px;
   }
 
-  .heart-filigree span:nth-child(1) { width: 40%; height: 40%; top: 20%; left: 30%; }
-  .heart-filigree span:nth-child(2) { width: 25%; height: 25%; top: 28%; left: 38%; border-color: rgba(139, 0, 0, 0.05); }
-  .heart-filigree span:nth-child(3) { width: 55%; height: 1px; top: 52%; left: 22%; border: none; border-top: 1px solid rgba(212, 175, 55, 0.05); }
-  .heart-filigree span:nth-child(4) { width: 100%; height: 55%; top: 32%; left: 0; border: 1px solid rgba(139, 0, 0, 0.03); border-radius: 50% 50% 0 0; border-bottom: none; }
+  .layer-mid {
+    --depth: 20px;
+  }
 
-  /* Rose inside heart */
-  .heart-rose {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 35%;
+  .layer-front {
+    --depth: 36px;
+  }
+
+  .stage-art {
+    width: min(36vw, 46rem);
     height: auto;
-    color: var(--parchment);
-    opacity: 0.4;
   }
 
-  /* Rings */
-  .ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(139, 0, 0, 0.15);
+  .layer-back .stage-art {
+    transform: translateY(-8%);
+    filter: drop-shadow(0 10px 22px rgba(32, 26, 20, 0.16));
   }
 
-  .ring-outer { width: min(32vw, 42rem); height: min(32vw, 42rem); border-color: rgba(212, 175, 55, 0.1); animation: spin 40s linear infinite; }
-  .ring-mid { width: min(24vw, 30rem); height: min(24vw, 30rem); border-style: dashed; border-color: rgba(92, 0, 0, 0.2); animation: spin 28s linear infinite reverse; }
-  .ring-inner { width: min(14vw, 18rem); height: min(14vw, 18rem); border-color: rgba(139, 0, 0, 0.2); animation: spin 18s linear infinite; }
+  .layer-mid .stage-art {
+    width: min(30vw, 40rem);
+    transform: translate(16%, 10%);
+    filter: drop-shadow(0 16px 30px rgba(32, 26, 20, 0.24));
+    animation: stageFloatMid 9s ease-in-out infinite;
+  }
+
+  .layer-front .stage-art {
+    width: min(26vw, 34rem);
+    transform: translate(-16%, 24%);
+    filter: drop-shadow(0 18px 32px rgba(32, 26, 20, 0.3));
+    animation: stageFloatFront 7.5s ease-in-out infinite;
+  }
+
+  /* Vorpal gleam travelling down the blade */
+  .sword .gleam {
+    animation: gleam 3.6s ease-in-out infinite;
+  }
 
   /* Label */
   .stage-label {
@@ -239,17 +210,70 @@
   .stage-label .year {
     padding-left: 1.7rem;
     color: var(--royal-gold);
-    opacity: 0.6;
+    opacity: 0.85;
     font-size: 1.1rem;
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-16px) scale(1.02); }
+  @keyframes stageFloatMid {
+    0%,
+    100% {
+      transform: translate(16%, 10%) translateY(0);
+    }
+    50% {
+      transform: translate(16%, 10%) translateY(-14px);
+    }
   }
 
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  @keyframes stageFloatFront {
+    0%,
+    100% {
+      transform: translate(-16%, 24%) translateY(0);
+    }
+    50% {
+      transform: translate(-16%, 24%) translateY(-12px);
+    }
+  }
+
+  @keyframes gleam {
+    0%,
+    100% {
+      opacity: 0.15;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 0.85;
+      transform: translateY(6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stage-layer {
+      transition: none;
+    }
+    .layer-mid .stage-art,
+    .layer-front .stage-art,
+    .sword .gleam {
+      animation: none;
+    }
   }
 </style>
+
+<script>
+  const stage = document.querySelector('.left-stage') as HTMLElement | null;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (stage && !reduce.matches) {
+    let frame = 0;
+    const onMove = (e: PointerEvent) => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        stage.style.setProperty('--px', x.toFixed(3));
+        stage.style.setProperty('--py', y.toFixed(3));
+      });
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+  }
+</script>

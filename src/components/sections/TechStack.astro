@@ -6,12 +6,12 @@ const ts = techStack();
 <section class="section section-tech-stack" id="tech">
   <div class="tf-container">
     <div class="content-col">
-      <div class="text-body-2 dot-before subtitle">Core Stack</div>
+      <h2 class="visually-hidden">Core Stack</h2>
       <div class="tech-grid">
         {ts.map((tech: any) => (
           <div class="tech-stack-item reveal">
             <div class="logo">{tech.name.charAt(0)}</div>
-            <div class="name">{tech.name}</div>
+            <h3 class="name">{tech.name}</h3>
             <div class="desc">{tech.desc}</div>
           </div>
         ))}

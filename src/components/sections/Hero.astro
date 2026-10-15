@@ -1,14 +1,15 @@
 ---
 import LocalTime from '../islands/LocalTime';
 import Counter from '../islands/Counter';
-import { site, tags, stats } from '../../data/content';
+import { site, tags, stats, heroTitle } from '../../data/content';
 const s = site();
 const t = tags();
 const st = stats();
+const ht = heroTitle();
 ---
 
 <section class="section-hero" id="home">
-  <!-- Floating crimson rose petals — Heartless aesthetic -->
+  <!-- Floating rose petals — crimson paper cutouts over the parchment -->
   <div class="hero-petals" aria-hidden="true">
     <div class="petal"></div>
     <div class="petal"></div>
@@ -23,14 +24,12 @@ const st = stats();
   </div>
   <div class="tf-container" style="position: relative; z-index: 1;">
     <div class="content-col" style="position: relative;">
-      <div class="icon-gradient" aria-hidden="true"></div>
       <LocalTime client:load location={s.location} />
       <div class="main-title">
         <span class="hero-ornament" aria-hidden="true">♛ · ♡ · ♛</span>
-        <div class="text-body-1 dot-before subtitle">AI Systems Engineer</div>
+        <div class="text-body-1 dot-before subtitle">{ht.subtitle}</div>
         <h1 class="title text-display-1">
-          Building Systems That Think<br />
-          Fast at Scale
+          {ht.line1} <em>{ht.line2}</em>
         </h1>
         <div class="text-body-2 text">{s.intro}</div>
       </div>

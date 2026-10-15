@@ -35,11 +35,16 @@ export function navLinks() {
     { href: '#awards', label: n.awards, icon: 'award' },
     { href: '#pricing', label: n.engagement, icon: 'tag' },
     { href: '#faqs', label: n.faqs, icon: 'help' },
+    { href: '#news', label: n.news, icon: 'quote' },
     { href: '#contact', label: n.contact, icon: 'mail' },
   ];
 }
 
 export function tags(): string[] { return tr('hero.tags'); }
+export function heroTitle() {
+  const h = tr('hero') as any;
+  return { line1: h.titleLine1, line2: h.titleLine2, subtitle: h.subtitle };
+}
 export function stats() { return tr('stats'); }
 export function experiences() { return tr('experiences.items'); }
 export function works() { return tr('works.items'); }
@@ -52,6 +57,7 @@ export function process() { return tr('process.items'); }
 export function awards() { return tr('awards.items'); }
 export function pricingPlans() { return tr('pricing.plans'); }
 export function faqs() { return tr('faqs.items'); }
+export function newsSection() { return tr('news') as any; }
 export function socials() { return tr('socials'); }
 export function budgetOptions(): string[] {
   return ['< $2,000', '$2,000 – $5,000', '$5,000 – $15,000', '$15,000 – $40,000', '> $40,000'];

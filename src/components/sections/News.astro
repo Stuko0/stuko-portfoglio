@@ -1,0 +1,15 @@
+---
+import SubscribeForm from '../islands/SubscribeForm';
+import { newsSection } from '../../data/content';
+const n = newsSection();
+---
+
+<section class="section section-news" id="news">
+  <div class="tf-container">
+    <div class="content-col">
+      <h2 class="news-title reveal">{n.title}</h2>
+      <p class="news-copy reveal">{n.copy}</p>
+      <SubscribeForm client:visible data={n} />
+    </div>
+  </div>
+</section>

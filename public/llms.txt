@@ -1,0 +1,30 @@
+# Alexander Villanueva Porcel (Stuko)
+
+> AI Systems Engineer based in Cochabamba, Bolivia. Builds distributed
+> backends (Golang), GPU inference systems (CUDA, TensorFlow), high-throughput
+> data pipelines (StarRocks, PostgreSQL) and production Kubernetes. Remote-first,
+> ~4 years of experience. Spanish and English.
+
+## Portfolio
+
+- [Portfolio (English)](https://stuko.dev/en/): Main site. Experience, featured
+  projects (Lydia Agent, !Scarlet, Arquant GPU Inference), services, engagement
+  pricing, FAQs and contact form.
+- [Portfolio (Español)](https://stuko.dev/es/): Sitio principal en español.
+
+## Projects
+
+- [Alice Agent](https://alice-agent.stuko.dev): Open-source, local-first AI
+  teammate CLI. Persistent memory, extensible skills, sandboxed subagents.
+  Runs on your own machine.
+
+## Profiles
+
+- [GitHub (Stuko0)](https://github.com/Stuko0): Open-source repositories.
+- Email: contact@stuko.dev
+
+## Conventions
+
+- Site is bilingual (en/es); each page declares hreflang alternates.
+- Contact for consulting, retainers and systems work via the contact form on
+  the portfolio.

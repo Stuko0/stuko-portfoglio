@@ -1,7 +1,91 @@
 ---
-// Redirect root to English
-const base = Astro.url.pathname.replace(/\/$/, '');
-return Astro.redirect(`${base}/en/`);
+import '../styles/fonts.css';
+
+// Root interstitial: crawlable, branded, canonical to the default locale.
+// Non-JS crawlers get real content + links to every locale (pitfall: a bare
+// JS/meta redirect leaves the domain's first impression as an empty shell).
+const canonical = 'https://stuko.dev/en/';
+const title = 'Alexander Villanueva Porcel — AI Systems Engineer';
+const description =
+  'AI Systems Engineer building distributed backends, GPU inference systems, and high-throughput data pipelines. Golang, Python, CUDA, Kubernetes.';
 ---
 
-<!-- Redirecting to /en/ -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <!-- This page is a redirect stub: noindex, follow (destinations are indexed) -->
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href="https://stuko.dev/en/" />
+    <link rel="alternate" hreflang="es" href="https://stuko.dev/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://stuko.dev/en/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://stuko.dev/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://stuko.dev/images/og-preview.png" />
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <title>{title}</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #f4eddc;
+        color: #201a14;
+        font-family: 'EB Garamond', Georgia, serif;
+        text-align: center;
+        padding: 2rem;
+      }
+      main {
+        max-width: 42rem;
+      }
+      h1 {
+        font-family: 'Bodoni Moda', Didot, serif;
+        font-size: clamp(2.8rem, 5vw, 4.8rem);
+        margin: 0 0 1rem;
+        font-weight: 700;
+      }
+      p {
+        line-height: 1.6;
+        margin: 0 0 1rem;
+        color: #5c5145;
+      }
+      a {
+        color: #8e1b1e;
+        text-underline-offset: 3px;
+      }
+      nav {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 1.5rem;
+        font-size: 1.1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>{title}</h1>
+      <p>{description}</p>
+      <p>Redirecting to the English site.</p>
+      <nav aria-label="Languages">
+        <a href="/en/" hreflang="en">English</a>
+        <a href="/es/" hreflang="es">Español</a>
+      </nav>
+    </main>
+    <script>
+      window.location.replace('/en/');
+    </script>
+  </body>
+</html>

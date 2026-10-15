@@ -1,12 +1,12 @@
 {
   "site": {
-    "name": "Alexander Porcel",
+    "name": "Alexander Villanueva Porcel",
     "shortName": "Stuko",
     "handle": "@stuko",
-    "title": "Alexander Porcel — AI Systems Engineer",
-    "description": "AI Systems Engineer construyendo backends distribuidos, sistemas de inferencia GPU y pipelines de datos de alto rendimiento. Golang, Python, CUDA, Kubernetes.",
+    "title": "Alexander Villanueva Porcel — Ingeniero de Sistemas IA",
+    "description": "Ingeniero de Sistemas IA: backends distribuidos, inferencia GPU y pipelines de datos de alto rendimiento. Golang, Python, CUDA, Kubernetes.",
     "location": "Cochabamba, BO",
-    "email": "avplaying@gmail.com",
+    "email": "contact@stuko.dev",
     "phone": "+591 6760 2979",
     "tagline": "Building Systems That Think\nFast at Scale",
     "intro": "AI Systems Engineer con ~4 años construyendo backends distribuidos,\ninferencia GPU y pipelines de datos de alto rendimiento.",
@@ -63,7 +63,7 @@
         "category": "Agente IA · CLI Open Source",
         "date": "2025 – Presente",
         "href": "https://alice-agent.stuko.dev",
-        "gradient": "linear-gradient(135deg, #232136 0%, #c4a7e7 35%, #c41e3a 70%, #0a0508 100%)",
+        "gradient": "linear-gradient(150deg, #FBF7EC 0%, #F2E8D3 55%, #E9DCC0 100%)",
         "blurb": "Compañero IA local: memoria persistente, skills, subagentes en sandbox. Corre en tu máquina."
       },
       {
@@ -71,7 +71,7 @@
         "category": "Sistemas Distribuidos · Geospatial",
         "date": "2024 – Presente",
         "href": "#contact",
-        "gradient": "linear-gradient(160deg, #1a0f20 0%, #7a1528 40%, #c41e3a 70%, #0d0508 100%)",
+        "gradient": "linear-gradient(165deg, #FBF7EC 0%, #F6EEDD 50%, #EBDFC6 100%)",
         "blurb": "Monitoreo de incendios forestales para Bolivia — telemetría satelital, Golang, gRPC, K8s, PostGIS."
       },
       {
@@ -79,7 +79,7 @@
         "category": "Sistemas IA · Datos Financieros",
         "date": "2025 – Presente",
         "href": "#contact",
-        "gradient": "linear-gradient(145deg, #0a1628 0%, #1e4d6b 40%, #c4a35a 75%, #0a0508 100%)",
+        "gradient": "linear-gradient(140deg, #FAF4E6 0%, #F1E6CE 60%, #E7D9BB 100%)",
         "blurb": "Inferencia GPU en nodos RTX A6000 + StarRocks/ES OLAP para consultas financieras sub-second."
       }
     ]
@@ -247,10 +247,20 @@
   "footer": {
     "cta": "Agenda una Llamada"
   },
+  "news": {
+    "title": "Noticias del taller",
+    "copy": "Un correo solo cuando algo real se publica: Alice, !Scarlet, releases open source. Sin ruido ni digest semanal.",
+    "label": "Tu correo",
+    "placeholder": "tu@ejemplo.com",
+    "button": "Suscribirme",
+    "loading": "Suscribiendo...",
+    "success": "Revisa tu bandeja, el correo de bienvenida va en camino.",
+    "error": "No pude suscribirte. Escribe a contact@stuko.dev y te agrego."
+  },
   "socials": [
     { "label": "GitHub", "href": "https://github.com/Stuko0" },
     { "label": "Alice Agent", "href": "https://alice-agent.stuko.dev" },
-    { "label": "Email", "href": "mailto:avplaying@gmail.com" },
+    { "label": "Email", "href": "mailto:contact@stuko.dev" },
     { "label": "Web", "href": "https://stuko.dev" }
   ],
   "education": {

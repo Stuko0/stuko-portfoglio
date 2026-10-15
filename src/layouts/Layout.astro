@@ -1,8 +1,9 @@
 ---
+import '../styles/fonts.css';
 import '../styles/global.css';
 import RightNav from '../components/islands/RightNav';
 import ScrollReveal from '../components/islands/ScrollReveal';
-import { navLinks } from '../data/content';
+import { navLinks, faqs } from '../data/content';
 
 interface Props {
   title?: string;
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const {
-  title = 'Alexander Porcel — AI Systems Engineer',
+  title = 'Alexander Villanueva Porcel — AI Systems Engineer',
   description = 'AI Systems Engineer building distributed backends, GPU inference systems, and high-throughput data pipelines. Golang, Python, CUDA, Kubernetes.',
   locale = 'en',
 } = Astro.props;
@@ -19,6 +20,48 @@ const {
 const nl = navLinks();
 const canonicalUrl = `https://stuko.dev/${locale}/`;
 const ogImage = 'https://stuko.dev/images/og-preview.png';
+
+// Structured data: Person + WebSite + FAQPage (questions come from locale data)
+const faqItems = (faqs() || []) as any[];
+const ldGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      name: 'Alexander Villanueva Porcel',
+      alternateName: 'Stuko',
+      url: 'https://stuko.dev',
+      email: 'contact@stuko.dev',
+      jobTitle: locale === 'es' ? 'Ingeniero de Sistemas IA' : 'AI Systems Engineer',
+      description,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Cochabamba',
+        addressCountry: 'BO',
+      },
+      sameAs: ['https://github.com/Stuko0', 'https://alice-agent.stuko.dev'],
+      knowsAbout: [
+        'Golang', 'Python', 'CUDA', 'Kubernetes', 'GPU Inference',
+        'Distributed Systems', 'AI Agents', 'TensorFlow', 'PostgreSQL', 'Flutter',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      name: 'Stuko · Alexander Villanueva Porcel',
+      url: 'https://stuko.dev/',
+      inLanguage: ['en', 'es'],
+      description,
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -28,8 +71,8 @@ const ogImage = 'https://stuko.dev/images/og-preview.png';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#0a0508" />
-    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#F4EDDC" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalUrl} />
@@ -39,13 +82,7 @@ const ogImage = 'https://stuko.dev/images/og-preview.png';
     <link rel="alternate" hreflang="es" href="https://stuko.dev/es/" />
     <link rel="alternate" hreflang="x-default" href="https://stuko.dev/en/" />
 
-    <!-- Google Fonts: italic variant added for Playfair Display -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts are self-hosted from /fonts (see src/styles/fonts.css) -->
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -55,43 +92,22 @@ const ogImage = 'https://stuko.dev/images/og-preview.png';
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Alexander Porcel — AI Systems Engineer portfolio" />
+    <meta property="og:image:alt" content="Alexander Villanueva Porcel — AI Systems Engineer portfolio" />
     <meta property="og:locale" content={locale === 'es' ? 'es_BO' : 'en_US'} />
-    <meta property="og:site_name" content="Stuko · Alexander Porcel" />
+    <meta property="og:locale:alternate" content={locale === 'es' ? 'en_US' : 'es_BO'} />
+    <meta property="og:site_name" content="Stuko · Alexander Villanueva Porcel" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Alexander Porcel — AI Systems Engineer portfolio" />
+    <meta name="twitter:image:alt" content="Alexander Villanueva Porcel — AI Systems Engineer portfolio" />
 
     <title>{title}</title>
 
-    <!-- JSON-LD: Person structured data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Alexander Porcel",
-      "alternateName": "Stuko",
-      "url": "https://stuko.dev",
-      "email": "avplaying@gmail.com",
-      "jobTitle": "AI Systems Engineer",
-      "description": "AI Systems Engineer building distributed backends, GPU inference systems, and high-throughput data pipelines.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Cochabamba",
-        "addressCountry": "BO"
-      },
-      "sameAs": [
-        "https://github.com/Stuko0",
-        "https://alice-agent.stuko.dev"
-      ],
-      "knowsAbout": [
-        "Golang","Python","CUDA","Kubernetes","GPU Inference",
-        "Distributed Systems","AI Agents","TensorFlow","PostgreSQL","Flutter"
-      ]
-    })} />
+    <!-- JSON-LD: Person + WebSite + FAQPage -->
+    <script type="application/ld+json" set:html={JSON.stringify(ldGraph)} />
   </head>
   <body>
     <div class="wrapper">

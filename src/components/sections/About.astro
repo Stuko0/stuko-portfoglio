@@ -1,15 +1,9 @@
 ---
 import { about, site, education } from '../../data/content';
+import { Rose } from '../islands/HeartlessSVGs';
 const a = about();
 const s = site();
 const e = education();
-
-const playgroundGradients = [
-  'linear-gradient(145deg, #232136, #c4a7e7 45%, #1a0a10)',
-  'linear-gradient(160deg, #1a1020, #7a1528 50%, #0d0508)',
-  'linear-gradient(135deg, #0a1628, #1e4d6b 45%, #c4a35a)',
-  'linear-gradient(150deg, #200a18, #e8364f 55%, #0a0508)',
-];
 ---
 
 <section class="section section-about" id="about">
@@ -23,12 +17,48 @@ const playgroundGradients = [
         <span class="edu-period">{e.period}</span>
       </p>
       <a class="handle" href={`mailto:${s.email}`}>{s.email}</a>
+
+      {/* Four engraved plates instead of placeholder gradients */}
       <div class="playground">
-        {playgroundGradients.map((g, i) => (
-          <div class="playground-item reveal" style={`transition-delay: ${i * 60}ms`}>
-            <span style={`background: ${g};`}></span>
-          </div>
-        ))}
+        <div class="playground-item reveal" style="transition-delay: 0ms">
+          <span>
+            <Rose size={54} />
+          </span>
+        </div>
+        <div class="playground-item reveal" style="transition-delay: 60ms">
+          <span>
+            <svg viewBox="0 0 64 64" width="54" height="54" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="22" cy="22" r="11" />
+              <circle cx="22" cy="22" r="4" />
+              <path d="M30 30 L54 54" />
+              <path d="M45 45 L51 39" />
+              <path d="M50 50 L56 44" />
+            </svg>
+          </span>
+        </div>
+        <div class="playground-item reveal" style="transition-delay: 120ms">
+          <span>
+            <svg viewBox="0 0 64 64" width="54" height="54" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M14 26 h26 v9 a13 13 0 0 1 -26 0 z" />
+              <path d="M40 28 a7 7 0 0 1 0 14" />
+              <path d="M8 53 h40" />
+              <path d="M22 19 c0 -4 4 -4 4 -8" opacity="0.55" />
+              <path d="M30 19 c0 -4 4 -4 4 -8" opacity="0.55" />
+            </svg>
+          </span>
+        </div>
+        <div class="playground-item reveal" style="transition-delay: 180ms">
+          <span>
+            <svg viewBox="0 0 64 64" width="54" height="54" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="32" cy="37" r="17" />
+              <circle cx="32" cy="37" r="13" opacity="0.4" />
+              <path d="M32 37 L32 28" />
+              <path d="M32 37 L39 41" />
+              <path d="M28 16 h8 l2 5 h-12 z" />
+              <circle cx="32" cy="11" r="4" />
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -43,8 +73,8 @@ const playgroundGradients = [
   }
 
   .edu strong {
-    color: var(--white);
-    font-weight: 500;
+    color: var(--ink);
+    font-weight: 600;
   }
 
   .edu-period {
