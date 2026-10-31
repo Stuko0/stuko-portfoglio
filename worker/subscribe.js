@@ -18,7 +18,7 @@ const WELCOME_TEMPLATE = '04d688d8-cd1f-461e-9fe2-2f775aa60407';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const json = (obj, status = 200) =>
       new Response(JSON.stringify(obj), {
         status,
@@ -47,16 +47,30 @@ export default {
     // Honeypot: bots fill the hidden field; pretend success and stop here.
     if (body?.website) return json({ ok: true });
 
-    const res = await fetch('https://api.resend.com/contacts', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, audience_id: AUDIENCE_ID }),
-    });
+    // Resend quirk: POST /contacts ignores `audience_id` (the contact lands at
+    // account level but never in the audience), so membership only happens via
+    // the nested endpoint. Both create endpoints answer 201 idempotently, so the
+    // membership probe below (404 = not subscribed yet) is the only reliable
+    // "new subscriber" signal for the welcome email.
+    const auth = {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    };
 
-    const isNew = res.ok;
+    const probe = await fetch(
+      `https://api.resend.com/audiences/${AUDIENCE_ID}/contacts/${email}`,
+      { headers: auth },
+    );
+    if (!probe.ok && probe.status !== 404) {
+      return json({ error: 'upstream_error' }, 502);
+    }
+    const isNew = probe.status === 404;
+
+    const res = await fetch(
+      `https://api.resend.com/audiences/${AUDIENCE_ID}/contacts`,
+      { method: 'POST', headers: auth, body: JSON.stringify({ email }) },
+    );
+
     if (!res.ok) {
       const detail = await res.text();
       const already = /exist|duplicate|already/i.test(detail);
@@ -65,7 +79,10 @@ export default {
 
     if (isNew) {
       // Welcome email, best effort: a failure here never fails the subscription.
-      fetch('https://api.resend.com/emails', {
+      // ctx.waitUntil() is required: once the Worker returns its Response,
+      // Cloudflare cuts off any fetch() that was not awaited, so a bare
+      // fire-and-forget send never reaches Resend (verified 2026-10-31).
+      const welcome = fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${env.RESEND_API_KEY}`,
@@ -81,6 +98,8 @@ export default {
           },
         }),
       }).catch(() => {});
+      if (ctx && typeof ctx.waitUntil === 'function') ctx.waitUntil(welcome);
+      else await welcome;
     }
 
     return json({ ok: true, already: !isNew });

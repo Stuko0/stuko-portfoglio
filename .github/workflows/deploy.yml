@@ -27,3 +27,15 @@ jobs:
         run: npx wrangler@latest pages deploy dist --project-name stuko-portfoglio --branch main --commit-dirty=true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - name: Deploy subscribe Worker
+        run: |
+          printf '%s' '{"main_module":"subscribe.js","compatibility_date":"2026-09-01"}' > "$RUNNER_TEMP/worker_meta.json"
+          RESP=$(curl -sS -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -F "metadata=@$RUNNER_TEMP/worker_meta.json;type=application/json" \
+            -F "subscribe.js=@worker/subscribe.js;type=application/javascript+module" \
+            "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/subscribe")
+          echo "$RESP"
+          echo "$RESP" | grep -q '"success":true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ vars.CF_ACCOUNT_ID }}
